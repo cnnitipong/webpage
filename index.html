@@ -34,6 +34,8 @@
   --muted:#6b6b6b;
   --line:rgba(0,0,0,.12);
   --line-strong:rgba(0,0,0,.3);
+  /* single interaction accent — Chulalongkorn pink. Never used at rest. */
+  --chula:#DE5C8E;
   --font-display:"Newsreader",Georgia,"Times New Roman",Times,serif;
   --font-body:"Inter",system-ui,-apple-system,"Helvetica Neue",sans-serif;
   --font-mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
@@ -46,7 +48,7 @@
    RESET / BASE
    ============================================================ */
 *,*::before,*::after{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;-webkit-tap-highlight-color:transparent}
 body{
   margin:0;
   background:var(--bg);
@@ -65,9 +67,9 @@ a{color:inherit;text-decoration:none}
 button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 ul,ol{margin:0;padding:0;list-style:none}
 h1,h2,h3,h4,p{margin:0}
-::selection{background:#000;color:#fff}
-::-moz-selection{background:#000;color:#fff}
-:focus-visible{outline:2px solid #000;outline-offset:3px;border-radius:0}
+::selection{background:var(--chula);color:#fff}
+::-moz-selection{background:var(--chula);color:#fff}
+:focus-visible{outline:2px solid var(--chula);outline-offset:3px;border-radius:0}
 :focus:not(:focus-visible){outline:none}
 ::-webkit-scrollbar{width:10px;height:10px}
 ::-webkit-scrollbar-track{background:var(--bg)}
@@ -110,7 +112,9 @@ html{scrollbar-color:var(--ink) var(--bg);scrollbar-width:thin}
   letter-spacing:-.012em;
   line-height:1.15;
   margin-right:auto;
+  transition:color .35s var(--ease);
 }
+.sec-title:hover,.sec-title.touch-glow{color:var(--chula)}
 .sec-note{color:var(--muted);font-size:13px;letter-spacing:.01em}
 section{padding-block:clamp(72px,10vw,132px);position:relative}
 .lead{
@@ -123,9 +127,9 @@ section{padding-block:clamp(72px,10vw,132px);position:relative}
 a.accent{
   text-decoration:underline;text-underline-offset:3px;
   text-decoration-thickness:1px;text-decoration-color:var(--line-strong);
-  transition:text-decoration-color .3s var(--ease);
+  transition:text-decoration-color .3s var(--ease),color .3s var(--ease);
 }
-a.accent:hover{text-decoration-color:var(--ink)}
+a.accent:hover,a.accent.touch-glow{color:var(--chula);text-decoration-color:var(--chula)}
 
 /* ============================================================
    PRELOADER
@@ -154,7 +158,7 @@ a.accent:hover{text-decoration-color:var(--ink)}
 #progress{
   position:fixed;top:0;left:0;height:2px;width:100%;z-index:200;
   transform:scaleX(0);transform-origin:0 50%;
-  background:var(--ink);
+  background:var(--chula);
   will-change:transform;
 }
 
@@ -172,6 +176,11 @@ a.accent:hover{text-decoration-color:var(--ink)}
   backdrop-filter:saturate(120%) blur(14px);
   border-bottom-color:var(--line);
 }
+/* safe-area aware gutters for notched / rounded iPhone screens */
+#nav .wrap{
+  padding-left:calc(var(--pad) + env(safe-area-inset-left));
+  padding-right:calc(var(--pad) + env(safe-area-inset-right));
+}
 .nav-inner{
   display:flex;align-items:center;justify-content:space-between;gap:24px;
   height:70px;
@@ -181,9 +190,9 @@ a.accent:hover{text-decoration-color:var(--ink)}
   width:30px;height:30px;flex:none;display:grid;place-items:center;
   border:1px solid var(--ink);border-radius:0;
   font-family:var(--font-mono);font-size:11px;font-weight:500;letter-spacing:0;color:var(--ink);
-  transition:background-color .3s var(--ease),color .3s var(--ease);
+  transition:background-color .3s var(--ease),color .3s var(--ease),border-color .3s var(--ease);
 }
-.brand:hover .brand-mark{background:var(--ink);color:#fff}
+.brand:hover .brand-mark,.brand.touch-glow .brand-mark{background:var(--chula);border-color:var(--chula);color:#fff}
 .brand-txt{white-space:nowrap}
 .nav-links{display:flex;align-items:center;gap:clamp(14px,2vw,30px)}
 .nav-links a{
@@ -194,18 +203,20 @@ a.accent:hover{text-decoration-color:var(--ink)}
 .nav-links a::after{
   content:"";position:absolute;left:0;bottom:0;height:1px;width:100%;
   background:var(--ink);transform:scaleX(0);transform-origin:0 50%;
-  transition:transform .35s var(--ease);
+  transition:transform .35s var(--ease),background-color .3s var(--ease);
 }
-.nav-links a:hover{color:var(--ink)}
-.nav-links a:hover::after{transform:scaleX(1)}
+.nav-links a:hover,.nav-links a.touch-glow{color:var(--chula)}
+.nav-links a:hover::after,.nav-links a.touch-glow::after{transform:scaleX(1);background:var(--chula)}
 .nav-links a.active{color:var(--ink)}
 .nav-links a.active::after{transform:scaleX(1)}
+.nav-links a.active:hover,.nav-links a.active.touch-glow{color:var(--chula)}
 .nav-cta{
+  display:inline-flex;align-items:center;min-height:44px;
   font-family:var(--font-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;
   border:1px solid var(--ink);padding:9px 16px;border-radius:0;color:var(--ink);
-  transition:color .3s var(--ease),background-color .3s var(--ease);
+  transition:color .3s var(--ease),background-color .3s var(--ease),border-color .3s var(--ease);
 }
-.nav-cta:hover{color:#fff;background:var(--ink)}
+.nav-cta:hover,.nav-cta.touch-glow{color:#fff;background:var(--chula);border-color:var(--chula)}
 .burger{
   display:none;width:44px;height:44px;margin-right:-10px;
   position:relative;z-index:180;
@@ -221,8 +232,10 @@ body.menu-open .burger i:nth-child(2){transform:translateY(-3px) rotate(-45deg)}
 
 #menu{
   position:fixed;inset:0;z-index:170;background:var(--bg);
+  min-height:100svh;
   display:flex;flex-direction:column;justify-content:center;
-  padding:90px var(--pad) 48px;
+  padding:calc(90px + env(safe-area-inset-top)) calc(var(--pad) + env(safe-area-inset-right)) calc(48px + env(safe-area-inset-bottom)) calc(var(--pad) + env(safe-area-inset-left));
+  overflow-y:auto;
   opacity:0;visibility:hidden;transform:translateY(-12px);
   transition:opacity .4s var(--ease),transform .5s var(--ease),visibility .5s;
 }
@@ -232,10 +245,10 @@ body.menu-open #menu{opacity:1;visibility:visible;transform:none}
   display:flex;align-items:baseline;gap:18px;
   font-family:var(--font-display);font-weight:500;letter-spacing:-.01em;
   font-size:clamp(1.9rem,8vw,3rem);line-height:1.35;color:var(--soft);
-  padding:6px 0;border-bottom:1px solid var(--line);
+  padding:6px 0;min-height:44px;border-bottom:1px solid var(--line);
   transition:color .3s var(--ease),padding-left .3s var(--ease),border-color .3s var(--ease);
 }
-#menu a:hover{color:var(--ink);padding-left:8px;border-bottom-color:var(--ink)}
+#menu a:hover,#menu a.touch-glow{color:var(--chula);padding-left:8px;border-bottom-color:var(--chula)}
 #menu a em{font-style:normal;font-family:var(--font-mono);font-size:11px;letter-spacing:.16em;color:var(--muted);flex:none}
 .menu-foot{margin-top:40px;display:flex;flex-wrap:wrap;gap:8px 24px}
 
@@ -258,11 +271,14 @@ h1.hero-name{
   font-size:clamp(2.5rem,4.6vw + .3rem,5.2rem);
   line-height:1.02;letter-spacing:-.02em;margin:0 0 clamp(24px,4vw,34px);
 }
-.line-mask{display:block;overflow:hidden;padding-bottom:.04em}
-.line-mask > span{display:block;transform:translateY(110%);animation:lineUp 1.05s var(--ease) .55s forwards}
+.line-mask{display:block;overflow:hidden;padding-bottom:.04em;cursor:default}
+.line-mask > span{display:block;transform:translateY(110%);animation:lineUp 1.05s var(--ease) .55s forwards;transition:color .35s var(--ease)}
 .line-mask:nth-child(2) > span{animation-delay:.66s}
 @keyframes lineUp{to{transform:translateY(0)}}
 .hero-name .thin{color:var(--muted);font-weight:400}
+/* hovering / tapping either name line washes it in CU pink */
+.hero-name .line-mask:hover > span,
+.hero-name .line-mask.touch-glow > span{color:var(--chula)}
 .hero-line{
   max-width:50ch;font-family:var(--font-display);font-style:italic;font-weight:400;
   font-size:clamp(1.08rem,1.7vw,1.32rem);color:var(--soft);line-height:1.62;
@@ -273,17 +289,19 @@ h1.hero-name{
 }
 .hero-actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:clamp(28px,4vw,40px)}
 .btn{
-  display:inline-flex;align-items:center;gap:10px;
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
   font-family:var(--font-mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;
-  padding:15px 26px;border-radius:0;border:1px solid var(--ink);color:var(--ink);
-  transition:background-color .32s var(--ease),color .32s var(--ease);
+  padding:15px 26px;min-height:44px;border-radius:0;border:1px solid var(--ink);color:var(--ink);
+  transition:background-color .32s var(--ease),color .32s var(--ease),border-color .32s var(--ease);
 }
 .btn svg{width:13px;height:13px;flex:none;transition:transform .32s var(--ease)}
-.btn:hover svg{transform:translate(3px,-3px)}
+.btn:hover svg,.btn.touch-glow svg{transform:translate(3px,-3px)}
 .btn-primary{background:var(--ink);color:#fff;font-weight:500}
-.btn-primary:hover{background:transparent;color:var(--ink)}
-.btn-ghost:hover{background:var(--ink);color:#fff}
-.btn-ghost:hover svg{transform:translateX(3px)}
+/* every button resolves to the same pink fill on interaction */
+.btn:hover,.btn.touch-glow,
+.btn-primary:hover,.btn-primary.touch-glow,
+.btn-ghost:hover,.btn-ghost.touch-glow{background:var(--chula);border-color:var(--chula);color:#fff}
+.btn-ghost:hover svg,.btn-ghost.touch-glow svg{transform:translateX(3px)}
 
 /* portrait as an academic plate: hairline frame + offset second rule */
 .hero-portrait{position:relative;justify-self:end;width:100%;max-width:400px}
@@ -300,12 +318,6 @@ h1.hero-name{
   transition:filter .7s var(--ease);
 }
 .portrait-frame:hover img{filter:grayscale(0) contrast(1)}
-.portrait-cap{
-  display:block;margin-top:20px;
-  font-family:var(--font-display);font-style:italic;font-weight:400;
-  font-size:.88rem;line-height:1.5;color:var(--muted);
-}
-.portrait-tag{display:block;margin-top:6px}
 .scroll-cue{
   position:absolute;left:var(--pad);bottom:clamp(20px,4vh,38px);
   display:flex;align-items:center;gap:12px;color:var(--muted);
@@ -432,8 +444,11 @@ h1.hero-name{
 .tag{
   font-family:var(--font-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;
   padding:5px 10px;border:1px solid var(--line);border-radius:0;color:var(--muted);
+  transition:color .3s var(--ease),border-color .3s var(--ease),background-color .3s var(--ease);
 }
 .tag.is-pi{color:#fff;border-color:var(--ink);background:var(--ink)}
+.tag:hover,.tag.touch-glow,
+.tag.is-pi:hover,.tag.is-pi.touch-glow{color:var(--chula);border-color:var(--chula);background:transparent}
 
 /* ============================================================
    PUBLICATIONS
@@ -452,26 +467,31 @@ h1.hero-name{
 .pub-btn{
   width:100%;display:grid;grid-template-columns:minmax(0,1fr) 30px;
   gap:20px;align-items:start;text-align:left;
-  padding:22px 0;transition:padding-left .35s var(--ease),color .35s var(--ease);
+  padding:22px 0;min-height:44px;
+  transition:padding-left .35s var(--ease),color .35s var(--ease);
 }
-.pub-btn:hover{padding-left:8px}
+.pub-btn:hover,.pub-btn.touch-glow{padding-left:8px}
 .pub-main{display:block;min-width:0}
 .pub-title{
   display:block;
   font-family:var(--font-display);font-weight:400;font-size:clamp(1.06rem,1.7vw,1.22rem);
   line-height:1.5;letter-spacing:-.003em;color:var(--ink);
+  overflow-wrap:break-word;
   text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:4px;
   text-decoration-color:transparent;
-  transition:text-decoration-color .3s var(--ease);
+  transition:text-decoration-color .3s var(--ease),color .3s var(--ease);
 }
-.pub-btn:hover .pub-title{text-decoration-color:var(--ink)}
+.pub-btn:hover .pub-title,.pub-btn.touch-glow .pub-title{color:var(--chula);text-decoration-color:var(--chula)}
 .pub-meta{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;margin-top:10px}
 .pub-venue{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--muted)}
 .pub-first{
   font-family:var(--font-mono);font-size:9.5px;letter-spacing:.15em;text-transform:uppercase;
   color:var(--ink);border:1px solid var(--ink);background:transparent;
   padding:3px 8px;border-radius:0;
+  transition:color .3s var(--ease),border-color .3s var(--ease);
 }
+.pub-first:hover,.pub-first.touch-glow,
+.pub-btn:hover .pub-first,.pub-btn.touch-glow .pub-first{color:var(--chula);border-color:var(--chula)}
 .pub-plus{
   width:24px;height:24px;position:relative;margin-top:6px;justify-self:end;flex:none;
   border:1px solid var(--line);border-radius:0;
@@ -483,8 +503,9 @@ h1.hero-name{
 }
 .pub-plus::before{width:9px;height:1px}
 .pub-plus::after{width:1px;height:9px}
-.pub-btn:hover .pub-plus{border-color:var(--ink)}
-.pub-btn:hover .pub-plus::before,.pub-btn:hover .pub-plus::after{background:var(--ink)}
+.pub-btn:hover .pub-plus,.pub-btn.touch-glow .pub-plus{border-color:var(--chula)}
+.pub-btn:hover .pub-plus::before,.pub-btn:hover .pub-plus::after,
+.pub-btn.touch-glow .pub-plus::before,.pub-btn.touch-glow .pub-plus::after{background:var(--chula)}
 .pub-btn[aria-expanded="true"] .pub-plus{transform:rotate(135deg);border-color:var(--ink);background:var(--ink)}
 .pub-btn[aria-expanded="true"] .pub-plus::before,.pub-btn[aria-expanded="true"] .pub-plus::after{background:#fff}
 .pub-panel{overflow:hidden;height:0;transition:height .45s var(--ease)}
@@ -500,12 +521,15 @@ h1.hero-name{
    ============================================================ */
 .filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:clamp(28px,4vw,40px)}
 .pill{
+  display:inline-flex;align-items:center;justify-content:center;min-height:44px;
   font-family:var(--font-mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;
   padding:9px 17px;border:1px solid var(--line);border-radius:0;color:var(--muted);
   transition:color .3s var(--ease),border-color .3s var(--ease),background-color .3s var(--ease);
 }
-.pill:hover{color:var(--ink);border-color:var(--ink)}
+/* the selected pill stays black at rest; pink is interaction only */
 .pill[aria-pressed="true"]{color:#fff;border-color:var(--ink);background:var(--ink)}
+.pill:hover,.pill.touch-glow,
+.pill[aria-pressed="true"]:hover,.pill[aria-pressed="true"].touch-glow{color:var(--chula);border-color:var(--chula);background:transparent}
 .masonry{columns:3;column-gap:16px}
 .card{
   break-inside:avoid;margin-bottom:16px;position:relative;display:block;width:100%;
@@ -521,17 +545,19 @@ h1.hero-name{
   filter:grayscale(1);
   transition:filter .6s var(--ease);
 }
-.card:hover{border-color:var(--ink)}
-.card:hover img,.card:focus-visible img{filter:grayscale(0)}
+.card:hover,.card.touch-glow{border-color:var(--ink)}
+.card:hover img,.card:focus-visible img,.card.touch-glow img{filter:grayscale(0)}
 .card .cap{
   position:absolute;left:0;right:0;bottom:0;
   padding:12px 14px 13px;
   background:rgba(255,255,255,.94);border-top:1px solid var(--ink);
   transform:translateY(101%);opacity:0;
-  transition:transform .45s var(--ease),opacity .35s var(--ease);
+  transition:transform .45s var(--ease),opacity .35s var(--ease),border-color .35s var(--ease);
   display:flex;flex-direction:column;gap:4px;color:var(--ink);
 }
-.card:hover .cap,.card:focus-visible .cap{transform:none;opacity:1}
+.card:hover .cap,.card:focus-visible .cap,.card.touch-glow .cap{transform:none;opacity:1}
+/* the caption's top rule is the one pink accent on a gallery card */
+.card:hover .cap,.card.touch-glow .cap{border-top-color:var(--chula)}
 .card .cap b{font-family:var(--font-display);font-weight:500;font-size:1rem;letter-spacing:-.005em;line-height:1.3}
 .card .cap i{font-style:normal;font-family:var(--font-mono);font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
 .gal-empty{color:var(--muted);font-size:.95rem;padding:20px 0;display:none}
@@ -542,9 +568,11 @@ h1.hero-name{
    ============================================================ */
 #lightbox{
   position:fixed;inset:0;z-index:220;display:flex;align-items:center;justify-content:center;
+  min-height:100svh;
   background:rgba(251,251,249,.96);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);
-  padding:clamp(16px,5vw,56px);
+  padding:calc(clamp(16px,5vw,56px) + env(safe-area-inset-top)) calc(clamp(16px,5vw,56px) + env(safe-area-inset-right)) calc(clamp(16px,5vw,56px) + env(safe-area-inset-bottom)) calc(clamp(16px,5vw,56px) + env(safe-area-inset-left));
   opacity:0;visibility:hidden;transition:opacity .35s var(--ease),visibility .35s;
+  touch-action:pan-y;
 }
 #lightbox.open{opacity:1;visibility:visible}
 .lb-stage{position:relative;max-width:min(1100px,100%);max-height:100%;display:flex;flex-direction:column;gap:16px;align-items:center}
@@ -560,11 +588,11 @@ h1.hero-name{
 .lb-cap b{font-family:var(--font-display);font-weight:500;font-size:1.08rem;letter-spacing:-.005em}
 .lb-btn{
   position:absolute;top:50%;transform:translateY(-50%);
-  width:46px;height:46px;border:1px solid var(--ink);border-radius:0;
+  width:46px;height:46px;min-width:44px;min-height:44px;border:1px solid var(--ink);border-radius:0;
   display:grid;place-items:center;background:#fff;color:var(--ink);
-  transition:background-color .3s var(--ease),color .3s var(--ease);
+  transition:background-color .3s var(--ease),color .3s var(--ease),border-color .3s var(--ease);
 }
-.lb-btn:hover{color:#fff;background:var(--ink)}
+.lb-btn:hover,.lb-btn.touch-glow{color:#fff;background:var(--chula);border-color:var(--chula)}
 .lb-btn svg{width:16px;height:16px}
 .lb-prev{left:clamp(8px,2vw,24px)}
 .lb-next{right:clamp(8px,2vw,24px)}
@@ -572,9 +600,9 @@ h1.hero-name{
   position:absolute;top:clamp(14px,3vw,26px);right:clamp(14px,3vw,26px);
   width:44px;height:44px;border:1px solid var(--ink);border-radius:0;
   display:grid;place-items:center;background:#fff;color:var(--ink);
-  transition:background-color .3s var(--ease),color .3s var(--ease);
+  transition:background-color .3s var(--ease),color .3s var(--ease),border-color .3s var(--ease);
 }
-.lb-close:hover{color:#fff;background:var(--ink)}
+.lb-close:hover,.lb-close.touch-glow{color:#fff;background:var(--chula);border-color:var(--chula)}
 .lb-close svg{width:15px;height:15px}
 .lb-count{position:absolute;bottom:clamp(12px,3vw,26px);left:50%;transform:translateX(-50%)}
 .lb-count b{color:var(--ink);font-weight:500}
@@ -593,9 +621,9 @@ h1.hero-name{
   color:var(--soft);background:var(--surface);
   transition:border-color .3s var(--ease),color .3s var(--ease),background-color .3s var(--ease);
 }
-.chip:hover{border-color:var(--ink);color:#fff;background:var(--ink)}
+.chip:hover,.chip.touch-glow{border-color:var(--chula);color:var(--chula);background:var(--surface)}
 .chip small{font-family:var(--font-mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-left:7px;transition:color .3s var(--ease)}
-.chip:hover small{color:rgba(255,255,255,.72)}
+.chip:hover small,.chip.touch-glow small{color:var(--chula)}
 .skill-notes{display:grid;gap:14px;margin-top:clamp(34px,4vw,48px)}
 .note{display:grid;grid-template-columns:220px minmax(0,1fr);gap:clamp(14px,3vw,40px);align-items:baseline}
 .note p{color:var(--soft);font-size:.94rem;line-height:1.8}
@@ -603,7 +631,14 @@ h1.hero-name{
 /* ============================================================
    CONTACT / FOOTER
    ============================================================ */
-#contact{border-top:1px solid var(--line);padding-bottom:clamp(36px,5vw,56px)}
+#contact{
+  border-top:1px solid var(--line);
+  padding-bottom:calc(clamp(36px,5vw,56px) + env(safe-area-inset-bottom));
+}
+#contact .wrap{
+  padding-left:calc(var(--pad) + env(safe-area-inset-left));
+  padding-right:calc(var(--pad) + env(safe-area-inset-right));
+}
 .contact-head{
   font-family:var(--font-display);font-weight:500;
   font-size:clamp(2.1rem,6.4vw,4.2rem);line-height:1.08;letter-spacing:-.02em;
@@ -614,13 +649,21 @@ h1.hero-name{
   display:inline-block;position:relative;
   font-family:var(--font-display);font-weight:400;
   font-size:clamp(1.15rem,3.4vw,2.1rem);letter-spacing:-.01em;color:var(--ink);
-  padding-bottom:6px;
+  padding-bottom:6px;overflow-wrap:break-word;max-width:100%;
+  transition:color .35s var(--ease);
 }
 .mail::after{
   content:"";position:absolute;left:0;bottom:0;width:100%;height:1px;background:var(--ink);
-  transform:scaleX(0);transform-origin:100% 50%;transition:transform .55s var(--ease);
+  transform:scaleX(0);transform-origin:100% 50%;
+  transition:transform .55s var(--ease),background-color .35s var(--ease);
 }
-.mail:hover::after,.mail:focus-visible::after{transform:scaleX(1);transform-origin:0 50%}
+.mail:hover::after,.mail:focus-visible::after,.mail.touch-glow::after{transform:scaleX(1);transform-origin:0 50%}
+.mail:hover,.mail.touch-glow{color:var(--chula)}
+.mail:hover::after,.mail.touch-glow::after{background:var(--chula)}
+.contact-links{display:flex;flex-direction:column;align-items:flex-start;gap:clamp(10px,1.6vw,16px)}
+.contact-links .mail-label{
+  display:block;margin-bottom:2px;
+}
 .contact-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(28px,5vw,60px);align-items:start}
 .contact-aside{display:grid;gap:22px;border-left:1px solid var(--line);padding-left:clamp(20px,3vw,34px)}
 .contact-aside p{color:var(--soft);font-size:.95rem;line-height:1.75}
@@ -628,10 +671,68 @@ h1.hero-name{
   margin-top:clamp(56px,8vw,90px);padding-top:22px;border-top:1px solid var(--line);
   display:flex;flex-wrap:wrap;gap:10px 24px;justify-content:space-between;align-items:center;
 }
-.to-top{display:inline-flex;align-items:center;gap:9px;transition:color .3s var(--ease)}
-.to-top:hover{color:var(--ink)}
+.to-top{display:inline-flex;align-items:center;gap:9px;min-height:44px;transition:color .3s var(--ease)}
+.to-top:hover,.to-top.touch-glow{color:var(--chula)}
 .to-top svg{width:11px;height:11px;transition:transform .3s var(--ease)}
-.to-top:hover svg{transform:translateY(-3px)}
+.to-top:hover svg,.to-top.touch-glow svg{transform:translateY(-3px)}
+
+/* ============================================================
+   CONTACT MODAL
+   ============================================================ */
+#contactModal{
+  position:fixed;inset:0;z-index:260;
+  display:flex;align-items:center;justify-content:center;
+  min-height:100svh;
+  padding:calc(clamp(18px,5vw,48px) + env(safe-area-inset-top)) calc(clamp(18px,5vw,48px) + env(safe-area-inset-right)) calc(clamp(18px,5vw,48px) + env(safe-area-inset-bottom)) calc(clamp(18px,5vw,48px) + env(safe-area-inset-left));
+  background:rgba(20,20,20,.45);
+  -webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px);
+  opacity:0;visibility:hidden;
+  transition:opacity .26s var(--ease),visibility .26s;
+}
+#contactModal.open{opacity:1;visibility:visible}
+.cm-card{
+  position:relative;background:var(--bg);
+  border:1px solid var(--ink);border-radius:0;
+  padding:clamp(28px,5vw,44px);
+  width:min(520px,100%);max-height:100%;overflow-y:auto;
+  transform:scale(.97);
+  transition:transform .26s var(--ease);
+}
+/* offset second rule — same plate treatment as the portrait frame */
+.cm-card::after{
+  content:"";position:absolute;inset:-7px;border:1px solid rgba(0,0,0,.32);pointer-events:none;
+}
+#contactModal.open .cm-card{transform:scale(1)}
+.cm-label{display:block;margin-bottom:clamp(22px,3.5vw,30px);color:var(--ink)}
+.cm-rows{display:grid;gap:clamp(18px,3vw,26px)}
+.cm-row{display:block;padding-top:16px;border-top:1px solid var(--line)}
+.cm-row:first-child{padding-top:0;border-top:0}
+.cm-row .cm-key{display:block;margin-bottom:6px}
+.cm-val{
+  display:inline-block;position:relative;max-width:100%;overflow-wrap:break-word;
+  font-family:var(--font-display);font-weight:400;
+  font-size:clamp(1.2rem,4.4vw,1.72rem);letter-spacing:-.01em;line-height:1.25;
+  color:var(--ink);padding-bottom:5px;
+  transition:color .3s var(--ease);
+}
+.cm-val::after{
+  content:"";position:absolute;left:0;bottom:0;width:100%;height:1px;background:var(--ink);
+  transform:scaleX(0);transform-origin:100% 50%;
+  transition:transform .45s var(--ease),background-color .3s var(--ease);
+}
+.cm-val:hover,.cm-val.touch-glow{color:var(--chula)}
+.cm-val:hover::after,.cm-val:focus-visible::after,.cm-val.touch-glow::after{
+  transform:scaleX(1);transform-origin:0 50%;background:var(--chula);
+}
+.cm-close{
+  position:absolute;top:6px;right:6px;
+  width:44px;height:44px;display:grid;place-items:center;
+  border:1px solid transparent;border-radius:0;color:var(--ink);background:transparent;
+  transition:color .3s var(--ease),background-color .3s var(--ease),border-color .3s var(--ease);
+}
+.cm-close svg{width:15px;height:15px}
+.cm-close:hover,.cm-close.touch-glow{color:#fff;background:var(--chula);border-color:var(--chula)}
+.cm-foot{margin-top:clamp(22px,3.5vw,30px);padding-top:16px;border-top:1px solid var(--line)}
 
 /* ============================================================
    RESPONSIVE
@@ -664,7 +765,7 @@ h1.hero-name{
   .contact-grid{grid-template-columns:1fr}
   .contact-aside{border-left:0;border-top:1px solid var(--line);padding-left:0;padding-top:24px}
   .pub-panel > div{padding-right:0}
-  .lb-btn{width:42px;height:42px}
+  .lb-btn{width:44px;height:44px}
   .lb-prev{left:6px}.lb-next{right:6px}
 }
 @media (max-width:480px){
@@ -680,6 +781,7 @@ h1.hero-name{
    ============================================================ */
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
+  .cm-card,#contactModal.open .cm-card{transform:none}
   *,*::before,*::after{
     animation-duration:.001ms!important;animation-iteration-count:1!important;
     transition-duration:.001ms!important;scroll-behavior:auto!important;
@@ -740,6 +842,7 @@ h1.hero-name{
   </ol>
   <div class="menu-foot">
     <span class="mono">nitipong.pr@chula.ac.th</span>
+    <span class="mono">091-655-5161</span>
     <span class="mono">Bangkok · Thailand</span>
   </div>
 </nav>
@@ -764,18 +867,16 @@ h1.hero-name{
           View research
           <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
         </a>
-        <a class="btn btn-ghost" href="mailto:nitipong.pr@chula.ac.th">
+        <button type="button" class="btn btn-ghost" data-contact-open aria-haspopup="dialog">
           Get in touch
           <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M4 12L12 4M6 4h6v6"/></svg>
-        </a>
+        </button>
       </div>
     </div>
     <div class="hero-portrait">
       <div class="portrait-frame">
         <img id="portrait" src="assets/profile.jpg" alt="Portrait of Dr. Nitipong Praphaphankul" width="800" height="1066" fetchpriority="high" decoding="async">
       </div>
-      <span class="portrait-cap">Fig. 1 — N. Praphaphankul, Bangkok.</span>
-      <span class="portrait-tag mono">Ph.D. — Tokyo Institute of Technology</span>
     </div>
   </div>
   <div class="scroll-cue" aria-hidden="true">
@@ -1240,7 +1341,20 @@ h1.hero-name{
     <div class="contact-grid">
       <div class="reveal">
         <h2 class="contact-head" id="ct-t">Let's build <span>smarter</span> infrastructure.</h2>
-        <a class="mail" href="mailto:nitipong.pr@chula.ac.th">nitipong.pr@chula.ac.th</a>
+        <div class="contact-links">
+          <div>
+            <span class="mono mail-label">Email</span>
+            <a class="mail" href="mailto:nitipong.pr@chula.ac.th">nitipong.pr@chula.ac.th</a>
+          </div>
+          <div>
+            <span class="mono mail-label">Phone</span>
+            <a class="mail" href="tel:+66916555161">091-655-5161</a>
+          </div>
+          <button type="button" class="btn btn-ghost" data-contact-open aria-haspopup="dialog" style="margin-top:6px">
+            Get in touch
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M4 12L12 4M6 4h6v6"/></svg>
+          </button>
+        </div>
       </div>
       <aside class="contact-aside reveal" style="transition-delay:.1s">
         <div>
@@ -1286,6 +1400,27 @@ h1.hero-name{
     </div>
   </div>
   <span class="lb-count mono" id="lbCount"></span>
+</div>
+
+<!-- ============ CONTACT MODAL ============ -->
+<div id="contactModal" role="dialog" aria-modal="true" aria-labelledby="cmLabel" aria-hidden="true">
+  <div class="cm-card" role="document">
+    <button type="button" class="cm-close" id="cmClose" aria-label="Close contact details">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 3l10 10M13 3L3 13"/></svg>
+    </button>
+    <span class="mono cm-label" id="cmLabel">Get in touch</span>
+    <div class="cm-rows">
+      <div class="cm-row">
+        <span class="mono cm-key">Email</span>
+        <a class="cm-val" href="mailto:nitipong.pr@chula.ac.th">nitipong.pr@chula.ac.th</a>
+      </div>
+      <div class="cm-row">
+        <span class="mono cm-key">Phone</span>
+        <a class="cm-val" href="tel:+66916555161">091-655-5161</a>
+      </div>
+    </div>
+    <p class="mono cm-foot">Department of Architecture · Chulalongkorn University · Bangkok</p>
+  </div>
 </div>
 
 <script>
@@ -1556,6 +1691,24 @@ h1.hero-name{
     cards.forEach(function (c) {
       c.addEventListener("click", function () { open(c); });
     });
+
+    /* swipe left / right to page through images on touch devices */
+    var swX = 0, swY = 0;
+    box.addEventListener("touchstart", function (e) {
+      if (!e.changedTouches || !e.changedTouches.length) return;
+      swX = e.changedTouches[0].clientX;
+      swY = e.changedTouches[0].clientY;
+    }, { passive: true });
+    box.addEventListener("touchend", function (e) {
+      if (!box.classList.contains("open")) return;
+      if (!e.changedTouches || !e.changedTouches.length) return;
+      var dx = e.changedTouches[0].clientX - swX;
+      var dy = e.changedTouches[0].clientY - swY;
+      if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) {
+        show(dx < 0 ? idx + 1 : idx - 1);
+      }
+    }, { passive: true });
+
     var prev = $("#lbPrev"), next = $("#lbNext"), closeBtn = $("#lbClose");
     if (prev) prev.addEventListener("click", function () { show(idx - 1); });
     if (next) next.addEventListener("click", function () { show(idx + 1); });
@@ -1598,6 +1751,102 @@ h1.hero-name{
       }
       if (history.replaceState) history.replaceState(null, "", id);
     });
+  })();
+
+  /* ---------------------------------------------------------
+     10. CONTACT MODAL
+     --------------------------------------------------------- */
+  (function contactModal() {
+    var modal = $("#contactModal");
+    if (!modal) return;
+    var closeBtn = $("#cmClose");
+    var triggers = $$("[data-contact-open]");
+    var lastTrigger = null;
+    var FOCUSABLE = 'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])';
+
+    function focusables() { return $$(FOCUSABLE, modal); }
+
+    function openModal(trigger) {
+      lastTrigger = trigger || document.activeElement;
+      modal.classList.add("open");
+      modal.setAttribute("aria-hidden", "false");
+      document.body.classList.add("is-locked");
+      var f = focusables();
+      if (f.length) f[0].focus();
+    }
+    function closeModal() {
+      if (!modal.classList.contains("open")) return;
+      modal.classList.remove("open");
+      modal.setAttribute("aria-hidden", "true");
+      document.body.classList.remove("is-locked");
+      if (lastTrigger && lastTrigger.focus) lastTrigger.focus();
+      lastTrigger = null;
+    }
+
+    triggers.forEach(function (t) {
+      t.addEventListener("click", function (e) {
+        e.preventDefault();
+        openModal(t);
+      });
+    });
+    if (closeBtn) closeBtn.addEventListener("click", closeModal);
+    modal.addEventListener("click", function (e) {
+      if (e.target === modal) closeModal();
+    });
+    document.addEventListener("keydown", function (e) {
+      if (!modal.classList.contains("open")) return;
+      if (e.key === "Escape") { e.preventDefault(); closeModal(); return; }
+      if (e.key !== "Tab") return;
+      var f = focusables();
+      if (!f.length) return;
+      var first = f[0], last = f[f.length - 1];
+      if (!modal.contains(document.activeElement)) { e.preventDefault(); first.focus(); }
+      else if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    });
+  })();
+
+  /* ---------------------------------------------------------
+     11. TOUCH GLOW — iOS has no :hover, so a tap flashes the
+         same CU-pink state for ~450ms after release.
+     --------------------------------------------------------- */
+  (function touchGlow() {
+    var SEL = ".btn,.nav-cta,.nav-links a,#menu a,.brand,.mail,.cm-val,.cm-close," +
+              ".chip,.pill,.tag,.pub-btn,.pub-first,.sec-title,.card,.line-mask," +
+              "a.accent,.to-top,.lb-btn,.lb-close";
+    var active = [];
+    var timer = null;
+
+    function chain(node) {
+      var out = [];
+      var n = node;
+      while (n && n !== document.body && n.nodeType === 1) {
+        if (n.matches && n.matches(SEL)) out.push(n);
+        n = n.parentElement;
+      }
+      return out;
+    }
+    function clearAll() {
+      active.forEach(function (n) { n.classList.remove("touch-glow"); });
+      active = [];
+    }
+
+    document.addEventListener("touchstart", function (e) {
+      var hit = chain(e.target);
+      if (!hit.length) return;
+      if (timer) { window.clearTimeout(timer); timer = null; }
+      clearAll();
+      active = hit;
+      active.forEach(function (n) { n.classList.add("touch-glow"); });
+    }, { passive: true });
+
+    function release() {
+      if (!active.length) return;
+      if (timer) window.clearTimeout(timer);
+      timer = window.setTimeout(function () { clearAll(); timer = null; }, 450);
+    }
+    document.addEventListener("touchend", release, { passive: true });
+    document.addEventListener("touchcancel", release, { passive: true });
   })();
 
 })();
