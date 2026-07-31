@@ -1,0 +1,1606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Nitipong Praphaphankul — Structural Engineer, Department of Architecture, Chulalongkorn University</title>
+<meta name="description" content="Dr. Nitipong Praphaphankul is a structural engineer and lecturer at the Department of Architecture, Chulalongkorn University, Bangkok. Research in structural health monitoring, eddy current non-destructive testing, UAV photogrammetry and machine learning for the built environment.">
+<meta name="author" content="Nitipong Praphaphankul">
+<meta name="theme-color" content="#fbfbf9">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Nitipong Praphaphankul — Structural Engineer, Department of Architecture, Chulalongkorn University">
+<meta property="og:description" content="A structural engineer teaching at the Department of Architecture, Chulalongkorn University — structural health monitoring, non-destructive testing, and machine learning for the built environment.">
+<meta property="og:image" content="assets/profile.jpg">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Nitipong Praphaphankul — Structural Engineer, Department of Architecture">
+<meta name="twitter:description" content="Structural engineering, computation and architecture — monitoring, non-destructive testing and machine learning for the built environment.">
+<meta name="twitter:image" content="assets/profile.jpg">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23141414'/%3E%3Cpath d='M10 23V9l12 14V9' fill='none' stroke='%23ffffff' stroke-width='2.6' stroke-linecap='square' stroke-linejoin='miter'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   TOKENS
+   ============================================================ */
+:root{
+  --bg:#fbfbf9;
+  --surface:#ffffff;
+  --surface-2:#f4f4f2;
+  --text:#141414;
+  --ink:#141414;
+  --soft:#3a3a3a;
+  --muted:#6b6b6b;
+  --line:rgba(0,0,0,.12);
+  --line-strong:rgba(0,0,0,.3);
+  --font-display:"Newsreader",Georgia,"Times New Roman",Times,serif;
+  --font-body:"Inter",system-ui,-apple-system,"Helvetica Neue",sans-serif;
+  --font-mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  --maxw:1200px;
+  --pad:clamp(20px,5vw,48px);
+  --ease:cubic-bezier(.22,.61,.36,1);
+}
+
+/* ============================================================
+   RESET / BASE
+   ============================================================ */
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:var(--font-body);
+  font-size:16px;
+  line-height:1.65;
+  font-weight:400;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  overflow-x:hidden;
+}
+body.is-locked{overflow:hidden}
+img{max-width:100%;display:block;border:0}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+ul,ol{margin:0;padding:0;list-style:none}
+h1,h2,h3,h4,p{margin:0}
+::selection{background:#000;color:#fff}
+::-moz-selection{background:#000;color:#fff}
+:focus-visible{outline:2px solid #000;outline-offset:3px;border-radius:0}
+:focus:not(:focus-visible){outline:none}
+::-webkit-scrollbar{width:10px;height:10px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--ink);border-radius:0;border:3px solid var(--bg)}
+::-webkit-scrollbar-thumb:hover{background:#000}
+html{scrollbar-color:var(--ink) var(--bg);scrollbar-width:thin}
+
+.wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding-inline:var(--pad)}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.skip{position:fixed;top:-100px;left:16px;z-index:400;background:var(--ink);color:#fff;padding:10px 16px;border-radius:0;font-family:var(--font-mono);font-size:12px;transition:top .2s}
+.skip:focus{top:16px}
+
+/* ============================================================
+   TYPOGRAPHY HELPERS
+   ============================================================ */
+.mono{
+  font-family:var(--font-mono);
+  font-size:11px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--muted);
+  font-weight:400;
+}
+/* mono number + serif heading, closed by a typeset double rule */
+.sec-head{
+  display:flex;align-items:baseline;gap:clamp(16px,4vw,40px);
+  padding-bottom:18px;margin-bottom:clamp(40px,6vw,66px);
+  border-bottom:1px solid var(--ink);
+  position:relative;
+  flex-wrap:wrap;
+}
+.sec-head::after{
+  content:"";position:absolute;left:0;right:0;bottom:-4px;height:1px;background:var(--ink);
+}
+.sec-num{color:var(--ink);white-space:nowrap;font-weight:500}
+.sec-title{
+  font-family:var(--font-display);
+  font-weight:500;
+  font-size:clamp(1.7rem,3.4vw,2.6rem);
+  letter-spacing:-.012em;
+  line-height:1.15;
+  margin-right:auto;
+}
+.sec-note{color:var(--muted);font-size:13px;letter-spacing:.01em}
+section{padding-block:clamp(72px,10vw,132px);position:relative}
+.lead{
+  font-size:clamp(1rem,1.5vw,1.12rem);
+  color:var(--soft);
+  line-height:1.8;
+  font-weight:400;
+}
+.accent{color:var(--ink);font-weight:500}
+a.accent{
+  text-decoration:underline;text-underline-offset:3px;
+  text-decoration-thickness:1px;text-decoration-color:var(--line-strong);
+  transition:text-decoration-color .3s var(--ease);
+}
+a.accent:hover{text-decoration-color:var(--ink)}
+
+/* ============================================================
+   PRELOADER
+   ============================================================ */
+#preloader{
+  position:fixed;inset:0;z-index:300;background:#fff;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;
+  transition:opacity .35s var(--ease),visibility .35s;
+}
+#preloader.done{opacity:0;visibility:hidden;pointer-events:none}
+#preloader[hidden]{display:none}
+.pl-mono{
+  font-family:var(--font-display);font-weight:600;font-size:clamp(2.6rem,8vw,3.8rem);
+  letter-spacing:-.01em;line-height:1;
+  color:var(--ink);
+}
+.pl-mono span{color:var(--ink)}
+.pl-name{font-family:var(--font-mono);font-size:11px;letter-spacing:.34em;text-transform:uppercase;color:var(--muted)}
+.pl-bar{width:min(220px,42vw);height:1px;background:var(--line);overflow:hidden;margin-top:6px}
+.pl-bar i{display:block;height:100%;width:40%;background:var(--ink);animation:plSlide 1.1s var(--ease) infinite}
+@keyframes plSlide{0%{transform:translateX(-110%)}100%{transform:translateX(320%)}}
+
+/* ============================================================
+   SCROLL PROGRESS
+   ============================================================ */
+#progress{
+  position:fixed;top:0;left:0;height:2px;width:100%;z-index:200;
+  transform:scaleX(0);transform-origin:0 50%;
+  background:var(--ink);
+  will-change:transform;
+}
+
+/* ============================================================
+   NAV
+   ============================================================ */
+#nav{
+  position:fixed;top:0;left:0;right:0;z-index:150;
+  border-bottom:1px solid transparent;
+  transition:background-color .35s var(--ease),border-color .35s var(--ease),backdrop-filter .35s var(--ease);
+}
+#nav.scrolled{
+  background:rgba(255,255,255,.82);
+  -webkit-backdrop-filter:saturate(120%) blur(14px);
+  backdrop-filter:saturate(120%) blur(14px);
+  border-bottom-color:var(--line);
+}
+.nav-inner{
+  display:flex;align-items:center;justify-content:space-between;gap:24px;
+  height:70px;
+}
+.brand{display:flex;align-items:center;gap:12px;font-family:var(--font-display);font-weight:600;letter-spacing:0;font-size:1.04rem;color:var(--ink)}
+.brand-mark{
+  width:30px;height:30px;flex:none;display:grid;place-items:center;
+  border:1px solid var(--ink);border-radius:0;
+  font-family:var(--font-mono);font-size:11px;font-weight:500;letter-spacing:0;color:var(--ink);
+  transition:background-color .3s var(--ease),color .3s var(--ease);
+}
+.brand:hover .brand-mark{background:var(--ink);color:#fff}
+.brand-txt{white-space:nowrap}
+.nav-links{display:flex;align-items:center;gap:clamp(14px,2vw,30px)}
+.nav-links a{
+  font-family:var(--font-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--muted);position:relative;padding:6px 0;
+  transition:color .28s var(--ease);
+}
+.nav-links a::after{
+  content:"";position:absolute;left:0;bottom:0;height:1px;width:100%;
+  background:var(--ink);transform:scaleX(0);transform-origin:0 50%;
+  transition:transform .35s var(--ease);
+}
+.nav-links a:hover{color:var(--ink)}
+.nav-links a:hover::after{transform:scaleX(1)}
+.nav-links a.active{color:var(--ink)}
+.nav-links a.active::after{transform:scaleX(1)}
+.nav-cta{
+  font-family:var(--font-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  border:1px solid var(--ink);padding:9px 16px;border-radius:0;color:var(--ink);
+  transition:color .3s var(--ease),background-color .3s var(--ease);
+}
+.nav-cta:hover{color:#fff;background:var(--ink)}
+.burger{
+  display:none;width:44px;height:44px;margin-right:-10px;
+  position:relative;z-index:180;
+}
+.burger i{
+  position:absolute;left:11px;width:22px;height:1px;background:var(--ink);
+  transition:transform .35s var(--ease),opacity .2s var(--ease);
+}
+.burger i:nth-child(1){top:19px}
+.burger i:nth-child(2){top:25px}
+body.menu-open .burger i:nth-child(1){transform:translateY(3px) rotate(45deg)}
+body.menu-open .burger i:nth-child(2){transform:translateY(-3px) rotate(-45deg)}
+
+#menu{
+  position:fixed;inset:0;z-index:170;background:var(--bg);
+  display:flex;flex-direction:column;justify-content:center;
+  padding:90px var(--pad) 48px;
+  opacity:0;visibility:hidden;transform:translateY(-12px);
+  transition:opacity .4s var(--ease),transform .5s var(--ease),visibility .5s;
+}
+body.menu-open #menu{opacity:1;visibility:visible;transform:none}
+#menu ol{display:flex;flex-direction:column;gap:4px;counter-reset:m}
+#menu a{
+  display:flex;align-items:baseline;gap:18px;
+  font-family:var(--font-display);font-weight:500;letter-spacing:-.01em;
+  font-size:clamp(1.9rem,8vw,3rem);line-height:1.35;color:var(--soft);
+  padding:6px 0;border-bottom:1px solid var(--line);
+  transition:color .3s var(--ease),padding-left .3s var(--ease),border-color .3s var(--ease);
+}
+#menu a:hover{color:var(--ink);padding-left:8px;border-bottom-color:var(--ink)}
+#menu a em{font-style:normal;font-family:var(--font-mono);font-size:11px;letter-spacing:.16em;color:var(--muted);flex:none}
+.menu-foot{margin-top:40px;display:flex;flex-wrap:wrap;gap:8px 24px}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+#hero{
+  min-height:100svh;display:flex;align-items:center;
+  padding-block:clamp(110px,15vh,160px) clamp(60px,10vh,110px);
+  position:relative;overflow:hidden;
+}
+.hero-grid{
+  display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,.85fr);
+  gap:clamp(32px,6vw,80px);align-items:center;position:relative;
+}
+.hero-kicker{display:flex;align-items:center;gap:14px;margin-bottom:clamp(22px,4vw,34px)}
+.hero-kicker .dot{width:6px;height:6px;background:var(--ink);flex:none}
+h1.hero-name{
+  font-family:var(--font-display);font-weight:500;
+  font-size:clamp(2.5rem,4.6vw + .3rem,5.2rem);
+  line-height:1.02;letter-spacing:-.02em;margin:0 0 clamp(24px,4vw,34px);
+}
+.line-mask{display:block;overflow:hidden;padding-bottom:.04em}
+.line-mask > span{display:block;transform:translateY(110%);animation:lineUp 1.05s var(--ease) .55s forwards}
+.line-mask:nth-child(2) > span{animation-delay:.66s}
+@keyframes lineUp{to{transform:translateY(0)}}
+.hero-name .thin{color:var(--muted);font-weight:400}
+.hero-line{
+  max-width:50ch;font-family:var(--font-display);font-style:italic;font-weight:400;
+  font-size:clamp(1.08rem,1.7vw,1.32rem);color:var(--soft);line-height:1.62;
+}
+.hero-meta{
+  margin-top:clamp(22px,3.5vw,30px);padding-top:20px;border-top:1px solid var(--line);
+  display:flex;flex-wrap:wrap;gap:8px 22px;align-items:center;
+}
+.hero-actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:clamp(28px,4vw,40px)}
+.btn{
+  display:inline-flex;align-items:center;gap:10px;
+  font-family:var(--font-mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+  padding:15px 26px;border-radius:0;border:1px solid var(--ink);color:var(--ink);
+  transition:background-color .32s var(--ease),color .32s var(--ease);
+}
+.btn svg{width:13px;height:13px;flex:none;transition:transform .32s var(--ease)}
+.btn:hover svg{transform:translate(3px,-3px)}
+.btn-primary{background:var(--ink);color:#fff;font-weight:500}
+.btn-primary:hover{background:transparent;color:var(--ink)}
+.btn-ghost:hover{background:var(--ink);color:#fff}
+.btn-ghost:hover svg{transform:translateX(3px)}
+
+/* portrait as an academic plate: hairline frame + offset second rule */
+.hero-portrait{position:relative;justify-self:end;width:100%;max-width:400px}
+.portrait-frame{
+  position:relative;border:1px solid var(--ink);padding:9px;border-radius:0;
+  background:#fff;
+}
+.portrait-frame::after{
+  content:"";position:absolute;inset:-7px;border:1px solid rgba(0,0,0,.32);pointer-events:none;
+}
+.portrait-frame img{
+  width:100%;aspect-ratio:3/4;object-fit:cover;object-position:50% 28%;
+  filter:grayscale(1) contrast(1.02);
+  transition:filter .7s var(--ease);
+}
+.portrait-frame:hover img{filter:grayscale(0) contrast(1)}
+.portrait-cap{
+  display:block;margin-top:20px;
+  font-family:var(--font-display);font-style:italic;font-weight:400;
+  font-size:.88rem;line-height:1.5;color:var(--muted);
+}
+.portrait-tag{display:block;margin-top:6px}
+.scroll-cue{
+  position:absolute;left:var(--pad);bottom:clamp(20px,4vh,38px);
+  display:flex;align-items:center;gap:12px;color:var(--muted);
+}
+.scroll-cue .rail{position:relative;width:1px;height:46px;background:var(--line);overflow:hidden}
+.scroll-cue .rail i{position:absolute;top:0;left:0;width:100%;height:40%;background:var(--ink);animation:cue 2.2s var(--ease) infinite}
+@keyframes cue{0%{transform:translateY(-110%)}60%,100%{transform:translateY(260%)}}
+
+/* ============================================================
+   KEYWORD RULE (static, replaces the old marquee)
+   ============================================================ */
+.keyline{
+  border-block:1px solid var(--line);
+  padding:16px var(--pad);
+  text-align:center;
+  -webkit-user-select:none;user-select:none;
+}
+.keyline span{
+  font-family:var(--font-mono);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--muted);line-height:2;
+}
+
+/* ============================================================
+   REVEAL
+   ============================================================ */
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+
+/* ============================================================
+   ABOUT
+   ============================================================ */
+.about-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(30px,6vw,72px)}
+.about-grid p + p{margin-top:20px}
+.about-aside{border-left:1px solid var(--line);padding-left:clamp(20px,3vw,34px)}
+.about-aside dl{display:grid;gap:18px;margin:0}
+.about-aside dt{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink)}
+.about-aside dd{margin:2px 0 0;color:var(--soft);font-size:.95rem}
+.stats{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:1px;
+  margin-top:clamp(48px,7vw,80px);background:var(--line);border:1px solid var(--line);
+}
+.stat{background:var(--surface);padding:clamp(22px,3.4vw,34px)}
+.stat b{
+  display:block;font-family:var(--font-display);font-weight:500;
+  font-size:clamp(2.1rem,4.6vw,3.2rem);letter-spacing:-.015em;line-height:1;
+  color:var(--ink);font-variant-numeric:tabular-nums;
+}
+.stat b i{font-style:normal;color:var(--muted)}
+.stat span{display:block;margin-top:12px}
+
+/* ============================================================
+   TIMELINE
+   ============================================================ */
+.timeline{position:relative;padding-left:clamp(24px,4vw,40px)}
+.timeline::before{
+  content:"";position:absolute;left:0;top:6px;bottom:6px;width:1px;background:var(--line);
+}
+.tl-item{
+  position:relative;display:grid;grid-template-columns:190px minmax(0,1fr);
+  gap:clamp(14px,3vw,40px);align-items:start;
+  padding-block:clamp(24px,3.5vw,34px);border-bottom:1px solid var(--line);
+}
+.tl-item:last-child{border-bottom:0;padding-bottom:0}
+.tl-item::before{
+  content:"";position:absolute;left:calc(-1 * clamp(24px,4vw,40px) - 3.5px);
+  top:calc(clamp(24px,3.5vw,34px) + 9px);
+  width:8px;height:8px;border-radius:50%;background:var(--bg);
+  border:1px solid var(--ink);
+  transition:background-color .3s var(--ease);
+}
+.tl-item:hover::before{background:var(--ink)}
+.tl-when{padding-top:3px}
+.tl-item h3{
+  font-family:var(--font-display);font-weight:500;font-size:clamp(1.15rem,2vw,1.45rem);
+  letter-spacing:-.005em;line-height:1.3;
+}
+.tl-item h3 em{font-style:italic;color:var(--muted)}
+.tl-role{margin-top:8px;color:var(--soft);font-size:.95rem}
+.tl-item.current .tl-when{color:var(--ink);font-weight:500}
+.tl-item.current::before{background:var(--ink)}
+
+/* ============================================================
+   EDUCATION
+   ============================================================ */
+.edu-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2vw,24px)}
+.edu-card{
+  background:var(--surface);border:1px solid var(--line);border-radius:0;
+  padding:clamp(24px,3vw,32px);display:flex;flex-direction:column;gap:14px;
+  transition:border-color .35s var(--ease),background-color .35s var(--ease);
+}
+.edu-card:hover{border-color:var(--ink);background:var(--surface-2)}
+.edu-deg{font-family:var(--font-display);font-weight:600;font-size:1.45rem;letter-spacing:-.01em;line-height:1.1}
+.edu-school{color:var(--ink);font-size:.98rem;font-weight:400}
+.edu-card p{color:var(--muted);font-size:.9rem;line-height:1.7;margin-top:auto;padding-top:12px;border-top:1px solid var(--line)}
+.edu-card p b{color:var(--ink);font-weight:500}
+.edu-badge{
+  align-self:flex-start;font-family:var(--font-mono);font-size:10px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--ink);background:transparent;
+  border:1px solid var(--ink);padding:5px 10px;border-radius:0;
+}
+
+/* ============================================================
+   RESEARCH
+   ============================================================ */
+.res-group + .res-group{margin-top:clamp(40px,5vw,60px)}
+.res-label{display:flex;align-items:center;gap:16px;margin-bottom:26px}
+.res-label::after{content:"";flex:1;height:1px;background:var(--line)}
+.res-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+.res-grid::after{content:"";background:var(--bg);grid-column:auto / -1}
+.res-card{
+  background:var(--surface);padding:clamp(26px,3vw,34px);
+  display:flex;flex-direction:column;gap:16px;position:relative;
+  transition:background-color .4s var(--ease);
+}
+.res-card:hover{background:var(--surface-2)}
+.res-card .idx{font-family:var(--font-mono);font-size:11px;color:var(--muted);letter-spacing:.1em}
+.res-card:hover .idx{color:var(--ink)}
+.res-card h3{
+  font-family:var(--font-display);font-weight:500;font-size:1.22rem;
+  line-height:1.4;letter-spacing:-.005em;
+}
+.res-card p{color:var(--muted);font-size:.9rem;line-height:1.75}
+.res-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:auto;padding-top:8px}
+.tag{
+  font-family:var(--font-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;
+  padding:5px 10px;border:1px solid var(--line);border-radius:0;color:var(--muted);
+}
+.tag.is-pi{color:#fff;border-color:var(--ink);background:var(--ink)}
+
+/* ============================================================
+   PUBLICATIONS
+   ============================================================ */
+.pub-year{margin-bottom:clamp(30px,4vw,44px)}
+.pub-year > h3{
+  font-family:var(--font-display);font-weight:500;font-size:clamp(1.8rem,4vw,2.6rem);
+  letter-spacing:-.01em;line-height:1;color:#c7c7c2;
+  padding-bottom:12px;margin-bottom:4px;
+  font-variant-numeric:tabular-nums;
+  transition:color .4s var(--ease);
+}
+.pub-year:hover > h3{color:#9a9a94}
+.pub{border-top:1px solid var(--line)}
+.pub:last-child{border-bottom:1px solid var(--line)}
+.pub-btn{
+  width:100%;display:grid;grid-template-columns:minmax(0,1fr) 30px;
+  gap:20px;align-items:start;text-align:left;
+  padding:22px 0;transition:padding-left .35s var(--ease),color .35s var(--ease);
+}
+.pub-btn:hover{padding-left:8px}
+.pub-main{display:block;min-width:0}
+.pub-title{
+  display:block;
+  font-family:var(--font-display);font-weight:400;font-size:clamp(1.06rem,1.7vw,1.22rem);
+  line-height:1.5;letter-spacing:-.003em;color:var(--ink);
+  text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:4px;
+  text-decoration-color:transparent;
+  transition:text-decoration-color .3s var(--ease);
+}
+.pub-btn:hover .pub-title{text-decoration-color:var(--ink)}
+.pub-meta{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;margin-top:10px}
+.pub-venue{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--muted)}
+.pub-first{
+  font-family:var(--font-mono);font-size:9.5px;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--ink);border:1px solid var(--ink);background:transparent;
+  padding:3px 8px;border-radius:0;
+}
+.pub-plus{
+  width:24px;height:24px;position:relative;margin-top:6px;justify-self:end;flex:none;
+  border:1px solid var(--line);border-radius:0;
+  transition:border-color .35s var(--ease),transform .45s var(--ease),background-color .35s var(--ease);
+}
+.pub-plus::before,.pub-plus::after{
+  content:"";position:absolute;top:50%;left:50%;background:var(--muted);
+  transform:translate(-50%,-50%);transition:background-color .3s var(--ease),opacity .3s var(--ease);
+}
+.pub-plus::before{width:9px;height:1px}
+.pub-plus::after{width:1px;height:9px}
+.pub-btn:hover .pub-plus{border-color:var(--ink)}
+.pub-btn:hover .pub-plus::before,.pub-btn:hover .pub-plus::after{background:var(--ink)}
+.pub-btn[aria-expanded="true"] .pub-plus{transform:rotate(135deg);border-color:var(--ink);background:var(--ink)}
+.pub-btn[aria-expanded="true"] .pub-plus::before,.pub-btn[aria-expanded="true"] .pub-plus::after{background:#fff}
+.pub-panel{overflow:hidden;height:0;transition:height .45s var(--ease)}
+.pub-panel > div{padding:0 60px 26px 0}
+.pub-cite{
+  color:var(--muted);font-size:.9rem;line-height:1.85;
+  border-left:1px solid var(--ink);padding-left:18px;
+}
+.pub-cite em{color:var(--ink);font-style:italic}
+
+/* ============================================================
+   GALLERY
+   ============================================================ */
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:clamp(28px,4vw,40px)}
+.pill{
+  font-family:var(--font-mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;
+  padding:9px 17px;border:1px solid var(--line);border-radius:0;color:var(--muted);
+  transition:color .3s var(--ease),border-color .3s var(--ease),background-color .3s var(--ease);
+}
+.pill:hover{color:var(--ink);border-color:var(--ink)}
+.pill[aria-pressed="true"]{color:#fff;border-color:var(--ink);background:var(--ink)}
+.masonry{columns:3;column-gap:16px}
+.card{
+  break-inside:avoid;margin-bottom:16px;position:relative;display:block;width:100%;
+  overflow:hidden;border:1px solid var(--line);border-radius:0;background:var(--surface);
+  padding:0;text-align:left;
+  transition:opacity .45s var(--ease),transform .45s var(--ease),border-color .4s var(--ease);
+}
+.card.hide{display:none}
+.card.fading{opacity:0;transform:scale(.98)}
+.card .fig{display:block;position:relative;margin:0}
+.card img{
+  width:100%;height:auto;display:block;
+  filter:grayscale(1);
+  transition:filter .6s var(--ease);
+}
+.card:hover{border-color:var(--ink)}
+.card:hover img,.card:focus-visible img{filter:grayscale(0)}
+.card .cap{
+  position:absolute;left:0;right:0;bottom:0;
+  padding:12px 14px 13px;
+  background:rgba(255,255,255,.94);border-top:1px solid var(--ink);
+  transform:translateY(101%);opacity:0;
+  transition:transform .45s var(--ease),opacity .35s var(--ease);
+  display:flex;flex-direction:column;gap:4px;color:var(--ink);
+}
+.card:hover .cap,.card:focus-visible .cap{transform:none;opacity:1}
+.card .cap b{font-family:var(--font-display);font-weight:500;font-size:1rem;letter-spacing:-.005em;line-height:1.3}
+.card .cap i{font-style:normal;font-family:var(--font-mono);font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.gal-empty{color:var(--muted);font-size:.95rem;padding:20px 0;display:none}
+.gal-empty.show{display:block}
+
+/* ============================================================
+   LIGHTBOX
+   ============================================================ */
+#lightbox{
+  position:fixed;inset:0;z-index:220;display:flex;align-items:center;justify-content:center;
+  background:rgba(251,251,249,.96);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);
+  padding:clamp(16px,5vw,56px);
+  opacity:0;visibility:hidden;transition:opacity .35s var(--ease),visibility .35s;
+}
+#lightbox.open{opacity:1;visibility:visible}
+.lb-stage{position:relative;max-width:min(1100px,100%);max-height:100%;display:flex;flex-direction:column;gap:16px;align-items:center}
+.lb-stage img{
+  max-width:100%;max-height:74svh;width:auto;object-fit:contain;
+  border:1px solid var(--ink);border-radius:0;
+  filter:none;
+  transform:scale(.98);opacity:0;
+  transition:transform .45s var(--ease),opacity .35s var(--ease);
+}
+#lightbox.open .lb-stage img{transform:none;opacity:1}
+.lb-cap{display:flex;flex-wrap:wrap;gap:6px 16px;align-items:center;justify-content:center;text-align:center}
+.lb-cap b{font-family:var(--font-display);font-weight:500;font-size:1.08rem;letter-spacing:-.005em}
+.lb-btn{
+  position:absolute;top:50%;transform:translateY(-50%);
+  width:46px;height:46px;border:1px solid var(--ink);border-radius:0;
+  display:grid;place-items:center;background:#fff;color:var(--ink);
+  transition:background-color .3s var(--ease),color .3s var(--ease);
+}
+.lb-btn:hover{color:#fff;background:var(--ink)}
+.lb-btn svg{width:16px;height:16px}
+.lb-prev{left:clamp(8px,2vw,24px)}
+.lb-next{right:clamp(8px,2vw,24px)}
+.lb-close{
+  position:absolute;top:clamp(14px,3vw,26px);right:clamp(14px,3vw,26px);
+  width:44px;height:44px;border:1px solid var(--ink);border-radius:0;
+  display:grid;place-items:center;background:#fff;color:var(--ink);
+  transition:background-color .3s var(--ease),color .3s var(--ease);
+}
+.lb-close:hover{color:#fff;background:var(--ink)}
+.lb-close svg{width:15px;height:15px}
+.lb-count{position:absolute;bottom:clamp(12px,3vw,26px);left:50%;transform:translateX(-50%)}
+.lb-count b{color:var(--ink);font-weight:500}
+
+/* ============================================================
+   SKILLS
+   ============================================================ */
+.skill-rows{display:grid;gap:1px;background:var(--line);border-block:1px solid var(--line)}
+.skill-row{
+  background:var(--bg);display:grid;grid-template-columns:220px minmax(0,1fr);
+  gap:clamp(14px,3vw,40px);padding-block:clamp(22px,3vw,30px);align-items:start;
+}
+.chips{display:flex;flex-wrap:wrap;gap:9px}
+.chip{
+  font-size:.86rem;padding:8px 15px;border:1px solid var(--line);border-radius:0;
+  color:var(--soft);background:var(--surface);
+  transition:border-color .3s var(--ease),color .3s var(--ease),background-color .3s var(--ease);
+}
+.chip:hover{border-color:var(--ink);color:#fff;background:var(--ink)}
+.chip small{font-family:var(--font-mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-left:7px;transition:color .3s var(--ease)}
+.chip:hover small{color:rgba(255,255,255,.72)}
+.skill-notes{display:grid;gap:14px;margin-top:clamp(34px,4vw,48px)}
+.note{display:grid;grid-template-columns:220px minmax(0,1fr);gap:clamp(14px,3vw,40px);align-items:baseline}
+.note p{color:var(--soft);font-size:.94rem;line-height:1.8}
+
+/* ============================================================
+   CONTACT / FOOTER
+   ============================================================ */
+#contact{border-top:1px solid var(--line);padding-bottom:clamp(36px,5vw,56px)}
+.contact-head{
+  font-family:var(--font-display);font-weight:500;
+  font-size:clamp(2.1rem,6.4vw,4.2rem);line-height:1.08;letter-spacing:-.02em;
+  max-width:16ch;margin-bottom:clamp(34px,5vw,52px);
+}
+.contact-head span{color:var(--muted);font-style:italic}
+.mail{
+  display:inline-block;position:relative;
+  font-family:var(--font-display);font-weight:400;
+  font-size:clamp(1.15rem,3.4vw,2.1rem);letter-spacing:-.01em;color:var(--ink);
+  padding-bottom:6px;
+}
+.mail::after{
+  content:"";position:absolute;left:0;bottom:0;width:100%;height:1px;background:var(--ink);
+  transform:scaleX(0);transform-origin:100% 50%;transition:transform .55s var(--ease);
+}
+.mail:hover::after,.mail:focus-visible::after{transform:scaleX(1);transform-origin:0 50%}
+.contact-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(28px,5vw,60px);align-items:start}
+.contact-aside{display:grid;gap:22px;border-left:1px solid var(--line);padding-left:clamp(20px,3vw,34px)}
+.contact-aside p{color:var(--soft);font-size:.95rem;line-height:1.75}
+.foot{
+  margin-top:clamp(56px,8vw,90px);padding-top:22px;border-top:1px solid var(--line);
+  display:flex;flex-wrap:wrap;gap:10px 24px;justify-content:space-between;align-items:center;
+}
+.to-top{display:inline-flex;align-items:center;gap:9px;transition:color .3s var(--ease)}
+.to-top:hover{color:var(--ink)}
+.to-top svg{width:11px;height:11px;transition:transform .3s var(--ease)}
+.to-top:hover svg{transform:translateY(-3px)}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width:1024px){
+  .hero-grid{grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:36px}
+  .hero-portrait{max-width:330px}
+  .edu-grid{grid-template-columns:1fr 1fr}
+  .masonry{columns:2}
+  .nav-links{gap:16px}
+  .about-grid{grid-template-columns:1fr;gap:30px}
+  .about-aside{border-left:0;border-top:1px solid var(--line);padding-left:0;padding-top:26px}
+}
+@media (max-width:860px){
+  .nav-links,.nav-cta{display:none}
+  .burger{display:block}
+}
+@media (max-width:768px){
+  #hero{min-height:auto;padding-top:120px}
+  .hero-grid{grid-template-columns:1fr}
+  h1.hero-name{font-size:clamp(2.4rem,9.6vw,4.6rem)}
+  .hero-portrait{justify-self:start;max-width:280px}
+  .portrait-frame img{aspect-ratio:1/1;object-position:50% 22%}
+  .scroll-cue{display:none}
+  .stats{grid-template-columns:1fr 1fr}
+  .tl-item{grid-template-columns:1fr;gap:10px}
+  .tl-item::before{top:calc(clamp(24px,3.5vw,34px) + 6px)}
+  .edu-grid{grid-template-columns:1fr}
+  .skill-row,.note{grid-template-columns:1fr;gap:14px}
+  .contact-grid{grid-template-columns:1fr}
+  .contact-aside{border-left:0;border-top:1px solid var(--line);padding-left:0;padding-top:24px}
+  .pub-panel > div{padding-right:0}
+  .lb-btn{width:42px;height:42px}
+  .lb-prev{left:6px}.lb-next{right:6px}
+}
+@media (max-width:480px){
+  .masonry{columns:1}
+  .stats{grid-template-columns:1fr}
+  .brand-txt{display:none}
+  .btn{flex:1 1 auto;justify-content:center}
+  .lb-stage img{max-height:62svh}
+}
+
+/* ============================================================
+   REDUCED MOTION
+   ============================================================ */
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{
+    animation-duration:.001ms!important;animation-iteration-count:1!important;
+    transition-duration:.001ms!important;scroll-behavior:auto!important;
+  }
+  .line-mask > span{transform:none}
+  .reveal{opacity:1;transform:none}
+  .card .cap{transform:none;opacity:1}
+}
+</style>
+</head>
+<body>
+
+<!-- PRELOADER -->
+<div id="preloader" role="status" aria-label="Loading">
+  <div class="pl-mono">N<span>P</span></div>
+  <div class="pl-name">Nitipong Praphaphankul</div>
+  <div class="pl-bar"><i></i></div>
+</div>
+
+<div id="progress" aria-hidden="true"></div>
+
+<a class="skip" href="#about">Skip to content</a>
+
+<!-- NAV -->
+<header id="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="#hero" aria-label="Nitipong Praphaphankul — home">
+      <span class="brand-mark" aria-hidden="true">NP</span>
+      <span class="brand-txt">Nitipong Praphaphankul</span>
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#education">Education</a>
+      <a href="#research">Research</a>
+      <a href="#publications">Publications</a>
+      <a href="#activities">Activities</a>
+      <a href="#skills">Skills</a>
+    </nav>
+    <a class="nav-cta" href="#contact">Contact</a>
+    <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="menu">
+      <i></i><i></i>
+    </button>
+  </div>
+</header>
+
+<!-- MOBILE MENU -->
+<nav id="menu" aria-label="Mobile" aria-hidden="true">
+  <ol>
+    <li><a href="#about"><em>01</em>About</a></li>
+    <li><a href="#experience"><em>02</em>Experience</a></li>
+    <li><a href="#education"><em>03</em>Education</a></li>
+    <li><a href="#research"><em>04</em>Research</a></li>
+    <li><a href="#publications"><em>05</em>Publications</a></li>
+    <li><a href="#activities"><em>06</em>Activities</a></li>
+    <li><a href="#skills"><em>07</em>Skills</a></li>
+    <li><a href="#contact"><em>08</em>Contact</a></li>
+  </ol>
+  <div class="menu-foot">
+    <span class="mono">nitipong.pr@chula.ac.th</span>
+    <span class="mono">Bangkok · Thailand</span>
+  </div>
+</nav>
+
+<main>
+
+<!-- ============ HERO ============ -->
+<section id="hero" aria-labelledby="hero-name">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <p class="hero-kicker mono"><span class="dot" aria-hidden="true"></span>Structural Engineer · Lecturer · Ph.D.</p>
+      <h1 class="hero-name" id="hero-name">
+        <span class="line-mask"><span>Nitipong</span></span>
+        <span class="line-mask"><span class="thin">Praphaphankul</span></span>
+      </h1>
+      <p class="hero-line">A structural engineer teaching at the Department of Architecture — reading buildings and bridges through measurement, computation and data.</p>
+      <div class="hero-meta">
+        <span class="mono">Department of Architecture · Chulalongkorn University — Bangkok</span>
+      </div>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#research">
+          View research
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+        </a>
+        <a class="btn btn-ghost" href="mailto:nitipong.pr@chula.ac.th">
+          Get in touch
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M4 12L12 4M6 4h6v6"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="hero-portrait">
+      <div class="portrait-frame">
+        <img id="portrait" src="assets/profile.jpg" alt="Portrait of Dr. Nitipong Praphaphankul" width="800" height="1066" fetchpriority="high" decoding="async">
+      </div>
+      <span class="portrait-cap">Fig. 1 — N. Praphaphankul, Bangkok.</span>
+      <span class="portrait-tag mono">Ph.D. — Tokyo Institute of Technology</span>
+    </div>
+  </div>
+  <div class="scroll-cue" aria-hidden="true">
+    <span class="rail"><i></i></span>
+    <span class="mono">Scroll</span>
+  </div>
+</section>
+
+<!-- ============ KEYWORD RULE ============ -->
+<div class="keyline" aria-hidden="true">
+  <span>Structural Health Monitoring · Eddy Current NDT · UAV Photogrammetry · Machine Learning · CFRP Composites · Bridge Engineering · Signal Processing · Sensing &amp; IoT</span>
+</div>
+
+<!-- ============ 01 ABOUT ============ -->
+<section id="about" aria-labelledby="about-t">
+  <div class="wrap">
+    <header class="sec-head reveal">
+      <span class="mono sec-num">01 / About</span>
+      <h2 class="sec-title" id="about-t">Structural engineering, read through data</h2>
+    </header>
+    <div class="about-grid">
+      <div class="reveal">
+        <p class="lead">Nitipong Praphaphankul is a structural engineer and full-time Lecturer at the Department of Architecture, Chulalongkorn University. He holds a Ph.D. in Civil Engineering from the Tokyo Institute of Technology, completed as a MEXT Japanese Government Scholar.</p>
+        <p class="lead">Teaching structure inside a school of architecture places his work at a deliberate intersection — structural engineering, computation, and architectural design. His research spans subsurface crack detection with eddy current techniques, bridge monitoring through UAV-based photogrammetry and unsupervised machine learning, and damage assessment of CFRP-strengthened structures: work aimed at turning the physical condition of ageing infrastructure into signals that engineers and designers can act on.</p>
+      </div>
+      <aside class="about-aside reveal" style="transition-delay:.12s">
+        <dl>
+          <div>
+            <dt>Position</dt>
+            <dd>Structural Engineer · Full-time Lecturer, Department of Architecture, Chulalongkorn University</dd>
+          </div>
+          <div>
+            <dt>Focus areas</dt>
+            <dd>Structural health monitoring · Non-destructive testing · Photogrammetry &amp; remote sensing · Machine learning for infrastructure · Structure in architecture</dd>
+          </div>
+          <div>
+            <dt>Based in</dt>
+            <dd>Bangkok, Thailand — previously Tokyo, Japan</dd>
+          </div>
+          <div>
+            <dt>Email</dt>
+            <dd><a class="accent" href="mailto:nitipong.pr@chula.ac.th">nitipong.pr@chula.ac.th</a></dd>
+          </div>
+        </dl>
+      </aside>
+    </div>
+    <div class="stats" id="stats">
+      <div class="stat reveal"><b data-count="9" data-suffix="+">0</b><span class="mono">Publications</span></div>
+      <div class="stat reveal" style="transition-delay:.08s"><b data-count="5">0</b><span class="mono">Research projects</span></div>
+      <div class="stat reveal" style="transition-delay:.16s"><b data-count="3">0</b><span class="mono">Degrees</span></div>
+      <div class="stat reveal" style="transition-delay:.24s"><b data-count="6">0</b><span class="mono">Yrs in Japan</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 02 EXPERIENCE ============ -->
+<section id="experience" aria-labelledby="exp-t">
+  <div class="wrap">
+    <header class="sec-head reveal">
+      <span class="mono sec-num">02 / Experience</span>
+      <h2 class="sec-title" id="exp-t">Academia, industry, and the field</h2>
+      <span class="sec-note">2017 — Present</span>
+    </header>
+    <ol class="timeline">
+      <li class="tl-item current reveal">
+        <div class="tl-when mono">Sep 2025 — Present</div>
+        <div>
+          <h3>Chulalongkorn University <em>— Bangkok</em></h3>
+          <p class="tl-role">Full-time Lecturer, Department of Architecture. Teaching and research in structural engineering, non-destructive evaluation and data-driven condition assessment; principal investigator on grants in composite materials and NDT.</p>
+        </div>
+      </li>
+      <li class="tl-item reveal" style="transition-delay:.06s">
+        <div class="tl-when mono">Oct 2024 — Jul 2025</div>
+        <div>
+          <h3>Institute of Science Tokyo <em>— Tokyo</em></h3>
+          <p class="tl-role">Research Assistant. Continued experimental and numerical work on eddy current inspection of steel bridge decks and remote sensing for bridge movement monitoring.</p>
+        </div>
+      </li>
+      <li class="tl-item reveal" style="transition-delay:.12s">
+        <div class="tl-when mono">Jun 2024 — Aug 2024</div>
+        <div>
+          <h3>TTES Co., Ltd. <em>— Tokyo</em></h3>
+          <p class="tl-role">Intern, Assistant Engineer. Bridge inspection and structural assessment practice in a consulting environment.</p>
+        </div>
+      </li>
+      <li class="tl-item reveal" style="transition-delay:.18s">
+        <div class="tl-when mono">Jul 2018 — Aug 2018</div>
+        <div>
+          <h3>Supalai PCL <em>— Bangkok</em></h3>
+          <p class="tl-role">Intern, Structural QC Engineer. Quality control of reinforced concrete works on residential developments.</p>
+        </div>
+      </li>
+      <li class="tl-item reveal" style="transition-delay:.24s">
+        <div class="tl-when mono">Jul 2017 — Aug 2017</div>
+        <div>
+          <h3>Italian-Thai Development PCL <em>— Bangkok</em></h3>
+          <p class="tl-role">Intern, Site Engineer. Site supervision and construction methods on large-scale infrastructure works.</p>
+        </div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============ 03 EDUCATION ============ -->
+<section id="education" aria-labelledby="edu-t">
+  <div class="wrap">
+    <header class="sec-head reveal">
+      <span class="mono sec-num">03 / Education</span>
+      <h2 class="sec-title" id="edu-t">Three degrees, two countries</h2>
+    </header>
+    <div class="edu-grid">
+      <article class="edu-card reveal">
+        <span class="edu-badge">2021 — 2024</span>
+        <h3 class="edu-deg">Ph.D.</h3>
+        <p class="edu-school">Civil Engineering — Tokyo Institute of Technology</p>
+        <p>MEXT Japanese Government Scholar.<br><b>Dissertation:</b> “Subsurface Crack Detection on Bridge Decks using Eddy Current Technique.”</p>
+      </article>
+      <article class="edu-card reveal" style="transition-delay:.1s">
+        <span class="edu-badge">2019 — 2021</span>
+        <h3 class="edu-deg">M.E.</h3>
+        <p class="edu-school">Civil Engineering — Tokyo Institute of Technology</p>
+        <p><b>Thesis:</b> “Assessment of Bridge Structure Displacement using Structure from Motion” — UAV photogrammetry for displacement measurement.</p>
+      </article>
+      <article class="edu-card reveal" style="transition-delay:.2s">
+        <span class="edu-badge">2015 — 2019</span>
+        <h3 class="edu-deg">B.E.</h3>
+        <p class="edu-school">Civil Engineering — Chulalongkorn University</p>
+        <p>Bachelor of Engineering with <b>Honors</b>, Faculty of Engineering, Bangkok.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ KEYWORD RULE 2 ============ -->
+<div class="keyline" aria-hidden="true">
+  <span>Structural Engineering · Architecture · Non-Destructive Evaluation · Photogrammetry · Remote Sensing · Composite Materials · Computation · Fieldwork</span>
+</div>
+
+<!-- ============ 04 RESEARCH ============ -->
+<section id="research" aria-labelledby="res-t">
+  <div class="wrap">
+    <header class="sec-head reveal">
+      <span class="mono sec-num">04 / Research</span>
+      <h2 class="sec-title" id="res-t">Funded projects</h2>
+      <span class="sec-note">3 as Principal Investigator · 2 as Co-Investigator</span>
+    </header>
+
+    <div class="res-group">
+      <div class="res-label reveal"><span class="mono accent">Principal Investigator</span></div>
+      <div class="res-grid">
+        <article class="res-card reveal">
+          <span class="idx mono">P01</span>
+          <h3>Advanced signal processing and NDT for damage assessment in CFRP composites</h3>
+          <p>Development of signal-processing pipelines coupled with non-destructive testing to detect and characterise damage in carbon-fibre-reinforced polymer composites used for structural strengthening.</p>
+          <div class="res-tags"><span class="tag is-pi">PI</span><span class="tag">New Faculty Development Grant</span><span class="tag">NDT</span></div>
+        </article>
+        <article class="res-card reveal" style="transition-delay:.08s">
+          <span class="idx mono">P02</span>
+          <h3>Damage inspection of CFRP-strengthened structures</h3>
+          <p>A joint project between Chulalongkorn University and the Institute of Science Tokyo, extending inspection methods for CFRP-strengthened members across both laboratories.</p>
+          <div class="res-tags"><span class="tag is-pi">PI</span><span class="tag">Exchange Faculty Travel Grant</span><span class="tag">Chula × Science Tokyo</span></div>
+        </article>
+        <article class="res-card reveal" style="transition-delay:.16s">
+          <span class="idx mono">P03</span>
+          <h3>Composite materials for an architecture of lightness</h3>
+          <p>Sustainable hollow structural elements developed with the Center of Excellence in Social Design and the Architectural Intelligence (A.I.) Research Group, Faculty of Architecture, Chulalongkorn University.</p>
+          <div class="res-tags"><span class="tag is-pi">PI</span><span class="tag">Arts &amp; Humanities Publication Grant</span><span class="tag">Composites</span></div>
+        </article>
+      </div>
+    </div>
+
+    <div class="res-group">
+      <div class="res-label reveal"><span class="mono">Co-Investigator</span></div>
+      <div class="res-grid">
+        <article class="res-card reveal">
+          <span class="idx mono">C01</span>
+          <h3>Wood-based prefabricated panel for hybrid building</h3>
+          <p>Prefabricated timber-based panel systems for hybrid building construction, developed under the BCG Economy Framework.</p>
+          <div class="res-tags"><span class="tag">Co-Investigator</span><span class="tag">BCG Economy Framework</span><span class="tag">11M THB</span></div>
+        </article>
+        <article class="res-card reveal" style="transition-delay:.08s">
+          <span class="idx mono">C02</span>
+          <h3>Open data platform for digital business competitiveness</h3>
+          <p>An open data platform supporting commercial and tourism districts, delivered through a Thai–Japanese research collaboration.</p>
+          <div class="res-tags"><span class="tag">Co-Investigator</span><span class="tag">Global Partnership Grant</span><span class="tag">7.67M THB</span></div>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 05 PUBLICATIONS ============ -->
+<section id="publications" aria-labelledby="pub-t">
+  <div class="wrap">
+    <header class="sec-head reveal">
+      <span class="mono sec-num">05 / Publications</span>
+      <h2 class="sec-title" id="pub-t">Selected work</h2>
+      <span class="sec-note"><span class="accent">6</span> journal · <span class="accent">3</span> conference</span>
+    </header>
+
+    <!-- 2026 -->
+    <div class="pub-year reveal">
+      <h3>2026</h3>
+      <article class="pub">
+        <button class="pub-btn" aria-expanded="false" aria-controls="p1">
+          <span class="pub-main">
+            <span class="pub-title">Framework for Developing Resistivity Models to Identify Potential Safety Threats in Embankment Dams</span>
+            <span class="pub-meta"><span class="pub-venue">Engineered Science · Journal</span></span>
+          </span>
+          <span class="pub-plus" aria-hidden="true"></span>
+        </button>
+        <div class="pub-panel" id="p1" role="region">
+          <div><p class="pub-cite">Zain, M., Kupwiwat, C., Prasittisopin, L., Praphaphankul, N., Kaewunruen, S., &amp; Zaidi, M.&nbsp;A.&nbsp;A. (2026). Framework for Developing Resistivity Models to Identify Potential Safety Threats in Embankment Dams. <em>Engineered Science, 39</em>, 2054.</p></div>
+        </div>
+      </article>
+      <article class="pub">
+        <button class="pub-btn" aria-expanded="false" aria-controls="p2">
+          <span class="pub-main">
+            <span class="pub-title">Axial behavior of hollow concrete columns with GFRP and hybrid reinforcement</span>
+            <span class="pub-meta"><span class="pub-first">First author</span><span class="pub-venue">Structures · Elsevier · Journal</span></span>
+          </span>
+          <span class="pub-plus" aria-hidden="true"></span>
+        </button>
+        <div class="pub-panel" id="p2" role="region">
+          <div><p class="pub-cite">Praphaphankul, N., Koohathong, P., Tiprak, K., Lenwari, A., &amp; Thongchom, C. (2026). Axial behavior of hollow concrete columns with GFRP and hybrid reinforcement. <em>Structures, 91</em>, 112550. Elsevier.</p></div>
+        </div>
+      </article>
+      <article class="pub">
+        <button class="pub-btn" aria-expanded="false" aria-controls="p3">
+          <span class="pub-main">
+            <span class="pub-title">Accessible remote sensing of bridge movement monitoring with UAV-based SfM photogrammetry and unsupervised machine learning</span>
+            <span class="pub-meta"><span class="pub-first">First author</span><span class="pub-venue">Structure and Infrastructure Engineering · Taylor &amp; Francis</span></span>
+          </span>
+          <span class="pub-plus" aria-hidden="true"></span>
+        </button>
+        <div class="pub-panel" id="p3" role="region">
+          <div><p class="pub-cite">Praphaphankul, N., Prayoonwet, W., Tiprak, K., Akutsu, A., &amp; Sasaki, E. (2026). Accessible remote sensing of bridge movement monitoring with UAV-based SfM photogrammetry and unsupervised machine learning. <em>Structure and Infrastructure Engineering</em>, 1–26. Taylor &amp; Francis.</p></div>
+        </div>
+      </article>
+    </div>
+
+    <!-- 2025 -->
+    <div class="pub-year reveal">
+      <h3>2025</h3>
+      <article class="pub">
+        <button class="pub-btn" aria-expanded="false" aria-controls="p4">
+          <span class="pub-main">
+            <span class="pub-title">Flexural Behavior of Concrete Beams Reinforced with GFRP Bars under High Temperature</span>
+            <span class="pub-meta"><span class="pub-venue">30th National Convention on Civil Engineering · Conference</span></span>
+          </span>
+          <span class="pub-plus" aria-hidden="true"></span>
+        </button>
+        <div class="pub-panel" id="p4" role="region">
+          <div><p class="pub-cite">Chakrathok, P., et&nbsp;al., including Praphaphankul, N. (2025). Flexural Behavior of Concrete Beams Reinforced with GFRP Bars under High Temperature. <em>30th National Convention on Civil Engineering</em>.</p></div>
+        </div>
+      </article>
+    </div>
+
+    <!-- 2024 -->
+    <div class="pub-year reveal">
+      <h3>2024</h3>
+      <article class="pub">
+        <button class="pub-btn" aria-expanded="false" aria-controls="p5">
+          <span class="pub-main">
+            <span class="pub-title">Numerical study of phase space analysis for the development of subsurface crack detection method using pulsed eddy current</span>
+            <span class="pub-meta"><span class="pub-first">First author</span><span class="pub-venue">Structure and Infrastructure Engineering · Journal</span></span>
+          </span>
+          <span class="pub-plus" aria-hidden="true"></span>
+        </button>
+        <div class="pub-panel" id="p5" role="region">
+          <div><p class="pub-cite">Praphaphankul, N., Akutsu, A., &amp; Sasaki, E. (2024). Numerical study of phase space analysis for the development of subsurface crack detection method using pulsed eddy current. <em>Structure and Infrastructure Engineering</em>, 1–21.</p></div>
+        </div>
+      </article>
+      <article class="pub">
+        <button class="pub-btn" aria-expanded="false" aria-controls="p6">
+          <span class="pub-main">
+            <span class="pub-title">Enhancing Subsurface Crack Detection in Orthotropic Steel Decks</span>
+            <span class="pub-meta"><span class="pub-first">First author</span><span class="pub-venue">EASEC-18 · Springer · Conference</span></span>
+          </span>
+          <span class="pub-plus" aria-hidden="true"></span>
+        </button>
+        <div class="pub-panel" id="p6" role="region">
+          <div><p class="pub-cite">Praphaphankul, N., Akutsu, A., &amp; Sasaki, E. (2024). Enhancing Subsurface Crack Detection in Orthotropic Steel Decks. <em>EASEC-18</em>, 453–460. Springer.</p></div>
+        </div>
+      </article>
+      <article class="pub">
+        <button class="pub-btn" aria-expanded="false" aria-controls="p7">
+          <span class="pub-main">
+            <span class="pub-title">Enhancing root-deck crack detection in orthotropic steel decks</span>
+            <span class="pub-meta"><span class="pub-first">First author</span><span class="pub-venue">IABSE Symposium Manchester 2024 · Conference</span></span>
+          </span>
+          <span class="pub-plus" aria-hidden="true"></span>
+        </button>
+        <div class="pub-panel" id="p7" role="region">
+          <div><p class="pub-cite">Praphaphankul, N. (2024). Enhancing root-deck crack detection in orthotropic steel decks. <em>IABSE Symposium Manchester 2024</em>.</p></div>
+        </div>
+      </article>
+    </div>
+
+    <!-- 2023 -->
+    <div class="pub-year reveal">
+      <h3>2023</h3>
+      <article class="pub">
+        <button class="pub-btn" aria-expanded="false" aria-controls="p8">
+          <span class="pub-main">
+            <span class="pub-title">Numerical study for development of subsurface crack detection using pulsed eddy current and swept frequency eddy current</span>
+            <span class="pub-meta"><span class="pub-first">First author</span><span class="pub-venue">Structure and Infrastructure Engineering · Journal</span></span>
+          </span>
+          <span class="pub-plus" aria-hidden="true"></span>
+        </button>
+        <div class="pub-panel" id="p8" role="region">
+          <div><p class="pub-cite">Praphaphankul, N., Akutsu, A., &amp; Sasaki, E. (2023). Numerical study for development of subsurface crack detection using pulsed eddy current and swept frequency eddy current. <em>Structure and Infrastructure Engineering</em>, 1–16.</p></div>
+        </div>
+      </article>
+      <article class="pub">
+        <button class="pub-btn" aria-expanded="false" aria-controls="p9">
+          <span class="pub-main">
+            <span class="pub-title">Experimental Investigation on Post-Fire Mechanical Properties of GFRP Rebars</span>
+            <span class="pub-meta"><span class="pub-venue">Polymers · Journal</span></span>
+          </span>
+          <span class="pub-plus" aria-hidden="true"></span>
+        </button>
+        <div class="pub-panel" id="p9" role="region">
+          <div><p class="pub-cite">Thongchom, C., et&nbsp;al., including Praphaphankul, N. (2023). Experimental Investigation on Post-Fire Mechanical Properties of GFRP Rebars. <em>Polymers</em>.</p></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 06 ACTIVITIES ============ -->
+<section id="activities" aria-labelledby="act-t">
+  <div class="wrap">
+    <header class="sec-head reveal">
+      <span class="mono sec-num">06 / Activities</span>
+      <h2 class="sec-title" id="act-t">Life around the research</h2>
+      <span class="sec-note">Bangkok · Tokyo · in the field</span>
+    </header>
+
+    <div class="filters reveal" role="group" aria-label="Filter activities">
+      <button class="pill" data-filter="all" aria-pressed="true">All</button>
+      <button class="pill" data-filter="Research" aria-pressed="false">Research</button>
+      <button class="pill" data-filter="Teaching" aria-pressed="false">Teaching</button>
+      <button class="pill" data-filter="Field" aria-pressed="false">Field</button>
+      <button class="pill" data-filter="Community" aria-pressed="false">Community</button>
+      <button class="pill" data-filter="Milestones" aria-pressed="false">Milestones</button>
+    </div>
+
+    <div class="masonry reveal" id="gallery">
+      <button class="card" data-cat="Research" data-src="assets/act-01.jpg" data-cap="Conference presentation">
+        <span class="fig"><img src="assets/act-01.jpg" alt="Conference presentation" loading="lazy" decoding="async"><span class="cap"><i>Research</i><b>Conference presentation</b></span></span>
+      </button>
+      <button class="card" data-cat="Field" data-src="assets/act-02.jpg" data-cap="Night field survey · Tokyo">
+        <span class="fig"><img src="assets/act-02.jpg" alt="Night field survey in Tokyo" loading="lazy" decoding="async"><span class="cap"><i>Field</i><b>Night field survey · Tokyo</b></span></span>
+      </button>
+      <button class="card" data-cat="Community" data-src="assets/act-03.jpg" data-cap="Winter in Japan">
+        <span class="fig"><img src="assets/act-03.jpg" alt="Winter in Japan" loading="lazy" decoding="async"><span class="cap"><i>Community</i><b>Winter in Japan</b></span></span>
+      </button>
+      <button class="card" data-cat="Community" data-src="assets/act-04.jpg" data-cap="Student association trip">
+        <span class="fig"><img src="assets/act-04.jpg" alt="Student association trip" loading="lazy" decoding="async"><span class="cap"><i>Community</i><b>Student association trip</b></span></span>
+      </button>
+      <button class="card" data-cat="Teaching" data-src="assets/act-05.jpg" data-cap="Guest lecture">
+        <span class="fig"><img src="assets/act-05.jpg" alt="Guest lecture" loading="lazy" decoding="async"><span class="cap"><i>Teaching</i><b>Guest lecture</b></span></span>
+      </button>
+      <button class="card" data-cat="Teaching" data-src="assets/act-06.jpg" data-cap="Design-build studio with students">
+        <span class="fig"><img src="assets/act-06.jpg" alt="Design-build studio with students" loading="lazy" decoding="async"><span class="cap"><i>Teaching</i><b>Design-build studio with students</b></span></span>
+      </button>
+      <button class="card" data-cat="Community" data-src="assets/act-07.jpg" data-cap="Lab gathering">
+        <span class="fig"><img src="assets/act-07.jpg" alt="Lab gathering" loading="lazy" decoding="async"><span class="cap"><i>Community</i><b>Lab gathering</b></span></span>
+      </button>
+      <button class="card" data-cat="Community" data-src="assets/act-08.jpg" data-cap="Ski season · Japan">
+        <span class="fig"><img src="assets/act-08.jpg" alt="Ski season in Japan" loading="lazy" decoding="async"><span class="cap"><i>Community</i><b>Ski season · Japan</b></span></span>
+      </button>
+      <button class="card" data-cat="Research" data-src="assets/act-09.jpg" data-cap="Research collaboration">
+        <span class="fig"><img src="assets/act-09.jpg" alt="Research collaboration" loading="lazy" decoding="async"><span class="cap"><i>Research</i><b>Research collaboration</b></span></span>
+      </button>
+      <button class="card" data-cat="Research" data-src="assets/act-10.jpg" data-cap="NDT lab · sensing hardware">
+        <span class="fig"><img src="assets/act-10.jpg" alt="Non-destructive testing laboratory sensing hardware" loading="lazy" decoding="async"><span class="cap"><i>Research</i><b>NDT lab · sensing hardware</b></span></span>
+      </button>
+      <button class="card" data-cat="Research" data-src="assets/act-11.jpg" data-cap="Pavilion prototype">
+        <span class="fig"><img src="assets/act-11.jpg" alt="Pavilion prototype" loading="lazy" decoding="async"><span class="cap"><i>Research</i><b>Pavilion prototype</b></span></span>
+      </button>
+      <button class="card" data-cat="Research" data-src="assets/act-12.jpg" data-cap="Timber pavilion build">
+        <span class="fig"><img src="assets/act-12.jpg" alt="Timber pavilion build" loading="lazy" decoding="async"><span class="cap"><i>Research</i><b>Timber pavilion build</b></span></span>
+      </button>
+      <button class="card" data-cat="Teaching" data-src="assets/act-13.jpg" data-cap="Workshop with students">
+        <span class="fig"><img src="assets/act-13.jpg" alt="Workshop with students" loading="lazy" decoding="async"><span class="cap"><i>Teaching</i><b>Workshop with students</b></span></span>
+      </button>
+      <button class="card" data-cat="Research" data-src="assets/act-14.jpg" data-cap="Research seminar">
+        <span class="fig"><img src="assets/act-14.jpg" alt="Research seminar" loading="lazy" decoding="async"><span class="cap"><i>Research</i><b>Research seminar</b></span></span>
+      </button>
+      <button class="card" data-cat="Milestones" data-src="assets/act-15.jpg" data-cap="Commencement · Tokyo Tech">
+        <span class="fig"><img src="assets/act-15.jpg" alt="Commencement ceremony at Tokyo Tech" loading="lazy" decoding="async"><span class="cap"><i>Milestones</i><b>Commencement · Tokyo Tech</b></span></span>
+      </button>
+      <button class="card" data-cat="Milestones" data-src="assets/act-16.jpg" data-cap="Ph.D. graduation">
+        <span class="fig"><img src="assets/act-16.jpg" alt="Ph.D. graduation" loading="lazy" decoding="async"><span class="cap"><i>Milestones</i><b>Ph.D. graduation</b></span></span>
+      </button>
+      <button class="card" data-cat="Milestones" data-src="assets/act-17.jpg" data-cap="Graduation day · Tokyo Tech">
+        <span class="fig"><img src="assets/act-17.jpg" alt="Graduation day at Tokyo Tech" loading="lazy" decoding="async"><span class="cap"><i>Milestones</i><b>Graduation day · Tokyo Tech</b></span></span>
+      </button>
+    </div>
+    <p class="gal-empty mono" id="galEmpty">No items in this category.</p>
+  </div>
+</section>
+
+<!-- ============ 07 SKILLS ============ -->
+<section id="skills" aria-labelledby="sk-t">
+  <div class="wrap">
+    <header class="sec-head reveal">
+      <span class="mono sec-num">07 / Skills</span>
+      <h2 class="sec-title" id="sk-t">Tools of the trade</h2>
+    </header>
+    <div class="skill-rows">
+      <div class="skill-row reveal">
+        <span class="mono">Programming</span>
+        <div class="chips">
+          <span class="chip">Python</span><span class="chip">MATLAB</span><span class="chip">TensorFlow</span><span class="chip">PyTorch</span>
+        </div>
+      </div>
+      <div class="skill-row reveal" style="transition-delay:.06s">
+        <span class="mono">Structural software</span>
+        <div class="chips">
+          <span class="chip">SAP2000</span><span class="chip">ETABS</span><span class="chip">ATENA</span><span class="chip">COMSOL</span><span class="chip">AutoCAD</span><span class="chip">Revit</span>
+        </div>
+      </div>
+      <div class="skill-row reveal" style="transition-delay:.12s">
+        <span class="mono">Cloud &amp; automation</span>
+        <div class="chips">
+          <span class="chip">AWS</span><span class="chip">Azure</span><span class="chip">UiPath</span><span class="chip">Automation Anywhere</span><span class="chip">CloudCompare</span>
+        </div>
+      </div>
+      <div class="skill-row reveal" style="transition-delay:.18s">
+        <span class="mono">Languages</span>
+        <div class="chips">
+          <span class="chip">Thai <small>Native</small></span><span class="chip">English <small>Professional</small></span><span class="chip">Japanese <small>Basic</small></span>
+        </div>
+      </div>
+    </div>
+    <div class="skill-notes">
+      <div class="note reveal">
+        <span class="mono">Credentials</span>
+        <p>Associate Civil Engineer License (COE Thailand) · DeepLearning.AI Deep Learning Specialization with 5 further TensorFlow / machine learning certificates · RPA certifications.</p>
+      </div>
+      <div class="note reveal" style="transition-delay:.08s">
+        <span class="mono">Leadership</span>
+        <p>Vice President, Thai Students' Association in Japan (TSAJ, 2023) · International Student Representative, Tokyo Institute of Technology (2023).</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ 08 CONTACT ============ -->
+<footer id="contact" aria-labelledby="ct-t">
+  <div class="wrap">
+    <header class="sec-head reveal">
+      <span class="mono sec-num">08 / Contact</span>
+      <p class="sec-title">Get in touch</p>
+      <span class="sec-note">Open to collaboration, supervision and industry projects</span>
+    </header>
+    <div class="contact-grid">
+      <div class="reveal">
+        <h2 class="contact-head" id="ct-t">Let's build <span>smarter</span> infrastructure.</h2>
+        <a class="mail" href="mailto:nitipong.pr@chula.ac.th">nitipong.pr@chula.ac.th</a>
+      </div>
+      <aside class="contact-aside reveal" style="transition-delay:.1s">
+        <div>
+          <p class="mono">Location</p>
+          <p>Department of Architecture, Chulalongkorn University, Bangkok</p>
+        </div>
+        <div>
+          <p class="mono">Interests</p>
+          <p>Structural health monitoring · Non-destructive evaluation · Photogrammetry &amp; remote sensing · Machine learning for infrastructure · FRP composites</p>
+        </div>
+        <div>
+          <p class="mono">Availability</p>
+          <p>Graduate supervision, joint research proposals and consulting on inspection and monitoring of existing structures.</p>
+        </div>
+      </aside>
+    </div>
+    <div class="foot">
+      <span class="mono">© 2026 Nitipong Praphaphankul · Department of Architecture, Chulalongkorn University</span>
+      <a class="to-top mono" href="#hero">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M8 13V3M4 7l4-4 4 4"/></svg>
+        Back to top
+      </a>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ LIGHTBOX ============ -->
+<div id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer" aria-hidden="true">
+  <button class="lb-close" id="lbClose" aria-label="Close viewer">
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 3l10 10M13 3L3 13"/></svg>
+  </button>
+  <button class="lb-btn lb-prev" id="lbPrev" aria-label="Previous image">
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M10 2L4 8l6 6"/></svg>
+  </button>
+  <button class="lb-btn lb-next" id="lbNext" aria-label="Next image">
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M6 2l6 6-6 6"/></svg>
+  </button>
+  <div class="lb-stage">
+    <img id="lbImg" alt="" decoding="async">
+    <div class="lb-cap">
+      <b id="lbCap"></b>
+      <span class="mono" id="lbCat"></span>
+    </div>
+  </div>
+  <span class="lb-count mono" id="lbCount"></span>
+</div>
+
+<script>
+(function () {
+  "use strict";
+
+  var $  = function (s, c) { return (c || document).querySelector(s); };
+  var $$ = function (s, c) { return Array.prototype.slice.call((c || document).querySelectorAll(s)); };
+  var mqReduce = window.matchMedia ? window.matchMedia("(prefers-reduced-motion: reduce)") : { matches: false };
+  var REDUCED = mqReduce.matches;
+
+  /* ---------------------------------------------------------
+     1. PRELOADER
+     --------------------------------------------------------- */
+  (function preloader() {
+    var el = $("#preloader");
+    if (!el) return;
+    var done = false;
+    function dismiss() {
+      if (done) return;
+      done = true;
+      el.classList.add("done");
+      window.setTimeout(function () {
+        if (el && el.parentNode) el.setAttribute("hidden", "");
+      }, 450);
+    }
+    window.addEventListener("load", dismiss, { once: true });
+    window.setTimeout(dismiss, 1000);
+  })();
+
+  /* ---------------------------------------------------------
+     2. SCROLL PROGRESS
+     --------------------------------------------------------- */
+  var progress = $("#progress");
+  var nav = $("#nav");
+  var ticking = false;
+
+  function onScrollFrame() {
+    var y = window.pageYOffset || document.documentElement.scrollTop || 0;
+    var h = document.documentElement.scrollHeight - window.innerHeight;
+    if (progress) progress.style.transform = "scaleX(" + (h > 0 ? Math.min(y / h, 1) : 0) + ")";
+    if (nav) nav.classList.toggle("scrolled", y > 24);
+    ticking = false;
+  }
+  function requestScroll() {
+    if (!ticking) { ticking = true; window.requestAnimationFrame(onScrollFrame); }
+  }
+  window.addEventListener("scroll", requestScroll, { passive: true });
+  window.addEventListener("resize", requestScroll, { passive: true });
+  onScrollFrame();
+
+  /* ---------------------------------------------------------
+     3. MOBILE MENU
+     --------------------------------------------------------- */
+  (function menu() {
+    var burger = $("#burger");
+    var panel = $("#menu");
+    if (!burger || !panel) return;
+    function setOpen(open) {
+      document.body.classList.toggle("menu-open", open);
+      document.body.classList.toggle("is-locked", open);
+      burger.setAttribute("aria-expanded", open ? "true" : "false");
+      burger.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+      panel.setAttribute("aria-hidden", open ? "false" : "true");
+    }
+    burger.addEventListener("click", function () {
+      setOpen(!document.body.classList.contains("menu-open"));
+    });
+    $$("#menu a").forEach(function (a) {
+      a.addEventListener("click", function () { setOpen(false); });
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && document.body.classList.contains("menu-open")) setOpen(false);
+    });
+    window.addEventListener("resize", function () {
+      if (window.innerWidth > 860 && document.body.classList.contains("menu-open")) setOpen(false);
+    }, { passive: true });
+  })();
+
+  /* ---------------------------------------------------------
+     4. REVEAL ON SCROLL
+     --------------------------------------------------------- */
+  (function reveal() {
+    var items = $$(".reveal");
+    if (!items.length) return;
+    if (REDUCED || !("IntersectionObserver" in window)) {
+      items.forEach(function (el) { el.classList.add("in"); });
+      return;
+    }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) {
+          en.target.classList.add("in");
+          io.unobserve(en.target);
+        }
+      });
+    }, { rootMargin: "0px 0px -10% 0px", threshold: 0.08 });
+    items.forEach(function (el) { io.observe(el); });
+  })();
+
+  /* ---------------------------------------------------------
+     5. ACTIVE NAV SECTION
+     --------------------------------------------------------- */
+  (function activeNav() {
+    var links = $$(".nav-links a");
+    if (!links.length || !("IntersectionObserver" in window)) return;
+    var map = {};
+    var targets = [];
+    links.forEach(function (a) {
+      var id = a.getAttribute("href");
+      if (!id || id.charAt(0) !== "#") return;
+      var sec = document.querySelector(id);
+      if (sec) { map[sec.id] = a; targets.push(sec); }
+    });
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        links.forEach(function (l) { l.classList.remove("active"); });
+        var a = map[en.target.id];
+        if (a) a.classList.add("active");
+      });
+    }, { rootMargin: "-45% 0px -50% 0px", threshold: 0 });
+    targets.forEach(function (t) { io.observe(t); });
+  })();
+
+  /* ---------------------------------------------------------
+     6. COUNTERS
+     --------------------------------------------------------- */
+  (function counters() {
+    var nodes = $$("[data-count]");
+    if (!nodes.length) return;
+    function render(el, val, suffix) {
+      el.innerHTML = val + (suffix ? "<i>" + suffix + "</i>" : "");
+    }
+    function run(el) {
+      var target = parseInt(el.getAttribute("data-count"), 10) || 0;
+      var suffix = el.getAttribute("data-suffix") || "";
+      if (REDUCED) { render(el, target, suffix); return; }
+      var dur = 1400;
+      var start = null;
+      function step(ts) {
+        if (start === null) start = ts;
+        var p = Math.min((ts - start) / dur, 1);
+        var eased = 1 - Math.pow(1 - p, 3);
+        render(el, Math.round(target * eased), suffix);
+        if (p < 1) window.requestAnimationFrame(step);
+      }
+      window.requestAnimationFrame(step);
+    }
+    if (!("IntersectionObserver" in window)) { nodes.forEach(run); return; }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) { run(en.target); io.unobserve(en.target); }
+      });
+    }, { threshold: 0.4 });
+    nodes.forEach(function (el) { io.observe(el); });
+  })();
+
+  /* ---------------------------------------------------------
+     7. PUBLICATIONS ACCORDION
+     --------------------------------------------------------- */
+  (function accordion() {
+    var btns = $$(".pub-btn");
+    btns.forEach(function (btn) {
+      var panel = document.getElementById(btn.getAttribute("aria-controls"));
+      if (!panel) return;
+      btn.addEventListener("click", function () {
+        var open = btn.getAttribute("aria-expanded") === "true";
+        if (open) {
+          panel.style.height = panel.scrollHeight + "px";
+          window.requestAnimationFrame(function () { panel.style.height = "0px"; });
+          btn.setAttribute("aria-expanded", "false");
+        } else {
+          panel.style.height = panel.scrollHeight + "px";
+          btn.setAttribute("aria-expanded", "true");
+          window.setTimeout(function () {
+            if (btn.getAttribute("aria-expanded") === "true") panel.style.height = "auto";
+          }, 460);
+        }
+      });
+    });
+    window.addEventListener("resize", function () {
+      btns.forEach(function (btn) {
+        var panel = document.getElementById(btn.getAttribute("aria-controls"));
+        if (panel && btn.getAttribute("aria-expanded") === "true") panel.style.height = "auto";
+      });
+    }, { passive: true });
+  })();
+
+  /* ---------------------------------------------------------
+     8. GALLERY FILTER + LIGHTBOX
+     --------------------------------------------------------- */
+  var cards = $$("#gallery .card");
+  var visible = cards.slice();
+
+  (function filters() {
+    var pills = $$(".pill");
+    var empty = $("#galEmpty");
+    if (!pills.length || !cards.length) return;
+
+    function apply(cat) {
+      var shown = [];
+      cards.forEach(function (c) {
+        var match = cat === "all" || c.getAttribute("data-cat") === cat;
+        if (match) shown.push(c);
+        c.classList.add("fading");
+        window.setTimeout(function () {
+          c.classList.toggle("hide", !match);
+          window.requestAnimationFrame(function () {
+            window.requestAnimationFrame(function () {
+              if (match) c.classList.remove("fading");
+            });
+          });
+        }, REDUCED ? 0 : 220);
+      });
+      visible = shown;
+      if (empty) empty.classList.toggle("show", shown.length === 0);
+    }
+
+    pills.forEach(function (p) {
+      p.addEventListener("click", function () {
+        pills.forEach(function (o) { o.setAttribute("aria-pressed", "false"); });
+        p.setAttribute("aria-pressed", "true");
+        apply(p.getAttribute("data-filter") || "all");
+      });
+    });
+  })();
+
+  (function lightbox() {
+    var box = $("#lightbox");
+    var img = $("#lbImg");
+    var cap = $("#lbCap");
+    var cat = $("#lbCat");
+    var count = $("#lbCount");
+    if (!box || !img || !cards.length) return;
+
+    var idx = 0;
+    var lastFocus = null;
+
+    function show(i) {
+      if (!visible.length) return;
+      idx = (i + visible.length) % visible.length;
+      var c = visible[idx];
+      img.src = c.getAttribute("data-src") || "";
+      img.alt = c.getAttribute("data-cap") || "";
+      if (cap) cap.textContent = c.getAttribute("data-cap") || "";
+      if (cat) cat.textContent = c.getAttribute("data-cat") || "";
+      if (count) count.innerHTML = "<b>" + String(idx + 1).padStart(2, "0") + "</b> / " + String(visible.length).padStart(2, "0");
+    }
+    function open(c) {
+      var i = visible.indexOf(c);
+      if (i < 0) i = 0;
+      lastFocus = document.activeElement;
+      show(i);
+      box.classList.add("open");
+      box.setAttribute("aria-hidden", "false");
+      document.body.classList.add("is-locked");
+      var close = $("#lbClose");
+      if (close) close.focus();
+    }
+    function close() {
+      box.classList.remove("open");
+      box.setAttribute("aria-hidden", "true");
+      document.body.classList.remove("is-locked");
+      if (lastFocus && lastFocus.focus) lastFocus.focus();
+    }
+
+    cards.forEach(function (c) {
+      c.addEventListener("click", function () { open(c); });
+    });
+    var prev = $("#lbPrev"), next = $("#lbNext"), closeBtn = $("#lbClose");
+    if (prev) prev.addEventListener("click", function () { show(idx - 1); });
+    if (next) next.addEventListener("click", function () { show(idx + 1); });
+    if (closeBtn) closeBtn.addEventListener("click", close);
+    box.addEventListener("click", function (e) {
+      if (e.target === box) close();
+    });
+    document.addEventListener("keydown", function (e) {
+      if (!box.classList.contains("open")) return;
+      if (e.key === "Escape") { close(); }
+      else if (e.key === "ArrowRight") { show(idx + 1); }
+      else if (e.key === "ArrowLeft") { show(idx - 1); }
+      else if (e.key === "Tab") {
+        var f = $$("button", box);
+        if (!f.length) return;
+        var first = f[0], last = f[f.length - 1];
+        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+      }
+    });
+  })();
+
+  /* ---------------------------------------------------------
+     9. SMOOTH ANCHORS (offset for sticky nav)
+     --------------------------------------------------------- */
+  (function anchors() {
+    document.addEventListener("click", function (e) {
+      var a = e.target && e.target.closest ? e.target.closest('a[href^="#"]') : null;
+      if (!a) return;
+      var id = a.getAttribute("href");
+      if (!id || id === "#") return;
+      var target = document.querySelector(id);
+      if (!target) return;
+      e.preventDefault();
+      var top = target.getBoundingClientRect().top + (window.pageYOffset || 0) - (id === "#hero" ? 0 : 62);
+      try {
+        window.scrollTo({ top: top, behavior: REDUCED ? "auto" : "smooth" });
+      } catch (err) {
+        window.scrollTo(0, top);
+      }
+      if (history.replaceState) history.replaceState(null, "", id);
+    });
+  })();
+
+})();
+</script>
+</body>
+</html>
