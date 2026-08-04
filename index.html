@@ -426,7 +426,10 @@ h1.hero-name{
 .res-group + .res-group{margin-top:clamp(40px,5vw,60px)}
 .res-label{display:flex;align-items:center;gap:16px;margin-bottom:26px}
 .res-label::after{content:"";flex:1;height:1px;background:var(--line)}
-.res-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1px;background:var(--bg);border:1px solid var(--line)}
+/* min(300px,100%) rather than a bare 300px: below ~342px viewport the track
+   floor exceeds the available width and the grid pushes past the wrap. Identical
+   layout at every width where 300px fits, so research + ongoing are unchanged. */
+.res-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(300px,100%),1fr));gap:1px;background:var(--bg);border:1px solid var(--line)}
 .res-card{box-shadow:0 0 0 1px var(--line)}
 .res-card{
   background:var(--surface);padding:clamp(26px,3vw,34px);
@@ -486,6 +489,98 @@ h1.hero-name{
   font-size:clamp(1.25rem,2.6vw,1.7rem);color:var(--soft);letter-spacing:-.005em;
 }
 .op-cta-note{color:var(--muted)}
+
+/* ============================================================
+   ONGOING — INVERTED INK BAND
+   the one dark passage on an otherwise white site. Full-bleed
+   background on the section; every override below is scoped
+   under #ongoing so .res-card / .tag / .mono etc. in the
+   RESEARCH section above stay untouched.
+   ============================================================ */
+#ongoing{
+  background:var(--ink);
+  position:relative;
+}
+#ongoing::before,#ongoing::after{
+  content:"";position:absolute;left:0;right:0;height:1px;
+  background:rgba(255,255,255,.12);pointer-events:none;
+}
+#ongoing::before{top:0}
+#ongoing::after{bottom:0}
+
+#ongoing .sec-head{border-bottom-color:#fbfbf9}
+#ongoing .sec-head::after{background:#fbfbf9}
+/* .sec-num is var(--ink) on light sections — the strongest tone in the
+   header, not a muted label. Inverted it must map to paper, not to grey,
+   or the ink band's section header reads weaker than every other one. */
+#ongoing .sec-num{color:#fbfbf9}
+#ongoing .sec-title{color:#fbfbf9}
+#ongoing .sec-title:hover,#ongoing .sec-title.touch-glow{color:var(--chula)}
+#ongoing .sec-note{color:#8f8f8a}
+
+#ongoing .res-label{color:#8f8f8a}
+#ongoing .res-label .mono{color:#8f8f8a}
+#ongoing .res-label::after{background:rgba(255,255,255,.16)}
+
+#ongoing .res-grid{background:var(--ink);border-color:rgba(255,255,255,.16)}
+#ongoing .res-card{background:#1a1a19;box-shadow:0 0 0 1px rgba(255,255,255,.14)}
+#ongoing .res-card:hover,#ongoing .res-card.touch-glow{background:#212120}
+#ongoing .res-card .idx{color:#8f8f8a}
+#ongoing .res-card:hover .idx,#ongoing .res-card.touch-glow .idx{color:#fbfbf9}
+#ongoing .res-card h3{color:#fbfbf9;transition:color .35s var(--ease)}
+#ongoing .res-card:hover h3,#ongoing .res-card.touch-glow h3{color:var(--chula)}
+#ongoing .res-card p{color:#c9c9c6}
+
+#ongoing .tag{color:#8f8f8a;border-color:rgba(255,255,255,.16);position:relative;padding-left:22px}
+#ongoing .tag:hover,#ongoing .tag.touch-glow{color:var(--chula);border-color:var(--chula)}
+#ongoing .tag-dot{
+  position:absolute;left:8px;top:50%;width:5px;height:5px;border-radius:50%;
+  background:var(--chula);transform:translateY(-50%);
+  animation:opTagPulse 3s ease-in-out infinite;
+}
+@keyframes opTagPulse{0%,100%{opacity:.35}50%{opacity:1}}
+
+#ongoing .plate-cue{color:#8f8f8a}
+#ongoing .plate-cue:hover,#ongoing .plate-cue:focus-visible,#ongoing .plate-cue.touch-glow,
+#ongoing .plate-trigger:hover .plate-cue,#ongoing .plate-trigger.touch-glow .plate-cue{color:var(--chula)}
+
+#ongoing .op-glyph{color:rgba(255,255,255,.28)}
+#ongoing .op-card:hover .op-glyph,#ongoing .op-card.touch-glow .op-glyph{color:var(--chula)}
+
+#ongoing .op-fig,#ongoing .op-fig-sm{border-color:rgba(255,255,255,.16);background:#141210}
+#ongoing .op-fig img,#ongoing .op-fig-sm img{opacity:.85;transition:filter .6s var(--ease),opacity .5s var(--ease)}
+#ongoing .op-card:hover .op-fig img,#ongoing .op-card.touch-glow .op-fig img,
+#ongoing .op-card:hover .op-fig-sm img,#ongoing .op-card.touch-glow .op-fig-sm img{opacity:1}
+#ongoing .op-fig-cap{color:#8f8f8a}
+
+#ongoing .op-cta{border-top-color:#fbfbf9}
+#ongoing .op-cta-line{color:#c9c9c6}
+#ongoing .op-cta-note{color:#8f8f8a}
+#ongoing .op-cta .btn-primary{background:transparent;color:#fbfbf9;border-color:#fbfbf9}
+#ongoing .op-cta .btn-primary:hover,#ongoing .op-cta .btn-primary.touch-glow{background:var(--chula);border-color:var(--chula);color:#fff}
+
+/* living previews — mini animated figures, one per card (except the
+   two photo cards, which just get the dim/hover treatment above) */
+#ongoing .op-mini{width:100%;aspect-ratio:320/90;margin:0;overflow:hidden;display:block}
+#ongoing .op-mini svg{display:block;width:100%;height:100%}
+#ongoing .op-mini svg *{fill:none;stroke:#fbfbf9;stroke-width:1.2;stroke-linecap:round;stroke-linejoin:round}
+/* static drafting furniture — pitch circles, datum lines, ticks */
+#ongoing .op-mini .op-mini-faint{opacity:.3}
+/* view-box (not fill-box): the origin is stated in viewBox units so it is
+   the true centre of the 320x90 frame, independent of how the group's
+   bounding box happens to fall. */
+#ongoing .op-mini .op-mini-rotate{transform-box:view-box;transform-origin:160px 45px;animation:opMiniSpin 90s linear infinite}
+@keyframes opMiniSpin{to{transform:rotate(360deg)}}
+#ongoing .op-mini .op-mini-dot{fill:var(--chula);stroke:none;animation:opMiniDot 3s ease-in-out infinite}
+@keyframes opMiniDot{0%,100%{opacity:.25}50%{opacity:1}}
+#ongoing .op-mini .op-mini-diag{animation:opMiniDiag 4s ease-in-out infinite}
+@keyframes opMiniDiag{0%,100%{stroke:#fbfbf9}50%{stroke:var(--chula)}}
+#ongoing .op-mini .op-mini-arc{stroke:var(--chula);transform-box:fill-box;transform-origin:50% 0%;animation:opMiniRipple 4s ease-out infinite}
+@keyframes opMiniRipple{0%{opacity:.85;transform:scale(1)}100%{opacity:0;transform:scale(1.22)}}
+#ongoing .op-mini .op-mini-crack{stroke:var(--chula);stroke-dasharray:2 2;opacity:.7;animation:opMiniCrack 2.6s ease-in-out infinite}
+@keyframes opMiniCrack{0%,100%{opacity:.4}50%{opacity:.9}}
+#ongoing .op-mini .op-mini-wave{stroke:var(--chula);stroke-width:1.6;stroke-dasharray:6 9;animation:opMiniTravel 5s linear infinite}
+@keyframes opMiniTravel{to{stroke-dashoffset:-150}}
 
 /* ============================================================
    RESEARCH PLATES (ongoing projects — clickable cards + viewer)
@@ -1016,6 +1111,13 @@ h1.hero-name{
   .line-mask > span{transform:none}
   .reveal{opacity:1;transform:none}
   .card .cap{transform:none;opacity:1}
+  #ongoing .tag-dot{animation:none;opacity:1}
+  #ongoing .op-mini .op-mini-rotate{animation:none}
+  #ongoing .op-mini .op-mini-dot{animation:none;opacity:1}
+  #ongoing .op-mini .op-mini-diag{animation:none;stroke:var(--chula)}
+  #ongoing .op-mini .op-mini-arc{animation:none;opacity:.6;transform:none}
+  #ongoing .op-mini .op-mini-crack{animation:none;opacity:.9}
+  #ongoing .op-mini .op-mini-wave{animation:none;stroke-dashoffset:0}
 }
 </style>
 </head>
@@ -1311,26 +1413,92 @@ h1.hero-name{
       <div class="res-grid">
         <article class="res-card op-card plate-trigger reveal" data-plate="1">
           <span class="idx mono">Q01</span>
+          <span class="op-mini" aria-hidden="true">
+            <svg viewBox="0 0 320 90">
+              <!-- static frame: pitch circle the beam ends ride on, plus a
+                   drafting centre line running out to the edges so the ring
+                   is read against a reference instead of floating alone -->
+              <circle class="op-mini-faint" cx="160" cy="45" r="36"/>
+              <line class="op-mini-faint" x1="18" y1="45" x2="112" y2="45" stroke-dasharray="10 4 2 4"/>
+              <line class="op-mini-faint" x1="208" y1="45" x2="302" y2="45" stroke-dasharray="10 4 2 4"/>
+              <line class="op-mini-faint" x1="18" y1="39" x2="18" y2="51"/>
+              <line class="op-mini-faint" x1="302" y1="39" x2="302" y2="51"/>
+              <!-- rotating reciprocal frame: 8 beams, each landing on the
+                   next beam's span rather than on a hub (r=36 outer, 12 inner) -->
+              <g class="op-mini-rotate">
+                <line x1="196" y1="45"   x2="148" y2="50"/>
+                <line x1="185.5" y1="19.5" x2="148" y2="40"/>
+                <line x1="160" y1="9"    x2="155" y2="33"/>
+                <line x1="134.5" y1="19.5" x2="165" y2="33"/>
+                <line x1="124" y1="45"   x2="172" y2="40"/>
+                <line x1="134.5" y1="70.5" x2="172" y2="50"/>
+                <line x1="160" y1="81"   x2="165" y2="57"/>
+                <line x1="185.5" y1="70.5" x2="155" y2="57"/>
+                <circle class="op-mini-dot" cx="148" cy="50" r="2.4"/>
+              </g>
+            </svg>
+          </span>
           <span class="op-glyph" aria-hidden="true">|ψ⟩</span>
           <h3>Quantum optimization of reciprocal structures</h3>
           <p>Exploring quantum annealing as a search engine for the discrete geometry of self-supporting reciprocal frames — where classical solvers drown in combinatorics.</p>
-          <div class="res-tags"><span class="tag">Manuscript in preparation</span></div>
+          <div class="res-tags"><span class="tag"><span class="tag-dot" aria-hidden="true"></span>Manuscript in preparation</span></div>
           <button type="button" class="mono plate-cue" aria-haspopup="dialog" aria-label="View plate: Quantum optimization of reciprocal structures">VIEW PLATE ↗</button>
         </article>
         <article class="res-card op-card plate-trigger reveal" style="transition-delay:.08s" data-plate="2">
           <span class="idx mono">Q02</span>
+          <span class="op-mini" aria-hidden="true">
+            <svg viewBox="0 0 320 90">
+              <line x1="20" y1="70" x2="85" y2="70"/>
+              <line x1="85" y1="70" x2="150" y2="70"/>
+              <line x1="150" y1="70" x2="215" y2="70"/>
+              <line x1="215" y1="70" x2="280" y2="70"/>
+              <line x1="52.5" y1="25" x2="117.5" y2="25"/>
+              <line x1="117.5" y1="25" x2="182.5" y2="25"/>
+              <line x1="182.5" y1="25" x2="247.5" y2="25"/>
+              <line x1="20" y1="70" x2="52.5" y2="25"/>
+              <line x1="52.5" y1="25" x2="85" y2="70"/>
+              <line class="op-mini-diag" x1="85" y1="70" x2="117.5" y2="25"/>
+              <line x1="117.5" y1="25" x2="150" y2="70"/>
+              <line x1="150" y1="70" x2="182.5" y2="25"/>
+              <line x1="182.5" y1="25" x2="215" y2="70"/>
+              <line x1="215" y1="70" x2="247.5" y2="25"/>
+              <line x1="247.5" y1="25" x2="280" y2="70"/>
+            </svg>
+          </span>
           <span class="op-glyph" aria-hidden="true">|0⟩</span>
           <h3>Quantum-ready truss design</h3>
           <p>Recasting classical truss sizing as a problem a quantum annealer can natively solve, with a statistically controlled benchmark against the metaheuristics engineers use today.</p>
-          <div class="res-tags"><span class="tag">Manuscript in preparation</span></div>
+          <div class="res-tags"><span class="tag"><span class="tag-dot" aria-hidden="true"></span>Manuscript in preparation</span></div>
           <button type="button" class="mono plate-cue" aria-haspopup="dialog" aria-label="View plate: Quantum-ready truss design">VIEW PLATE ↗</button>
         </article>
         <article class="res-card op-card plate-trigger reveal" style="transition-delay:.16s" data-plate="3">
           <span class="idx mono">Q03</span>
+          <span class="op-mini" aria-hidden="true">
+            <svg viewBox="0 0 320 90">
+              <!-- eddy-current probe coil -->
+              <rect x="140" y="8" width="40" height="18"/>
+              <line x1="148" y1="12" x2="148" y2="22"/>
+              <line x1="157" y1="12" x2="157" y2="22"/>
+              <line x1="166" y1="12" x2="166" y2="22"/>
+              <line x1="175" y1="12" x2="175" y2="22"/>
+              <!-- deck plate in section; spans the frame so the probe reads
+                   as scanning a continuous deck, not a 140px offcut -->
+              <line x1="40" y1="46" x2="280" y2="46"/>
+              <line x1="40" y1="54" x2="280" y2="54"/>
+              <!-- crack sits INSIDE the 46-54 plate thickness, rising from the
+                   far face and stopping short of the top: a subsurface flaw,
+                   which is the whole point of the method -->
+              <line class="op-mini-crack" x1="158" y1="54" x2="163" y2="47"/>
+              <!-- field arcs bulge downward (sweep-flag 0) from the coil face -->
+              <path class="op-mini-arc" d="M148,26 A12,12 0 0 0 172,26" style="animation-delay:0s"/>
+              <path class="op-mini-arc" d="M138,26 A22,22 0 0 0 182,26" style="animation-delay:.7s"/>
+              <path class="op-mini-arc" d="M128,26 A32,32 0 0 0 192,26" style="animation-delay:1.4s"/>
+            </svg>
+          </span>
           <span class="op-glyph" aria-hidden="true">|1⟩</span>
           <h3>Quantum machine learning for bridge inspection</h3>
           <p>Asking whether quantum-native representations of eddy-current signals can see subsurface damage in steel bridge decks that classical features miss.</p>
-          <div class="res-tags"><span class="tag">Manuscript in preparation</span></div>
+          <div class="res-tags"><span class="tag"><span class="tag-dot" aria-hidden="true"></span>Manuscript in preparation</span></div>
           <button type="button" class="mono plate-cue" aria-haspopup="dialog" aria-label="View plate: Quantum machine learning for bridge inspection">VIEW PLATE ↗</button>
         </article>
       </div>
@@ -1348,7 +1516,7 @@ h1.hero-name{
           </span>
           <h3>Rebuilding lost pagodas from archival photographs</h3>
           <p>Century-old monochrome photographs are often the only record of Thailand's lost or altered pagodas. This project turns single archival views into measurable 3D geometry for conservation and archives.</p>
-          <div class="res-tags"><span class="tag">Conference manuscript in preparation</span></div>
+          <div class="res-tags"><span class="tag"><span class="tag-dot" aria-hidden="true"></span>Conference manuscript in preparation</span></div>
           <button type="button" class="mono plate-cue" aria-haspopup="dialog" aria-label="View plate: Rebuilding lost pagodas from archival photographs">VIEW PLATE ↗</button>
         </article>
         <article class="res-card op-card plate-trigger reveal" style="transition-delay:.08s" data-plate="5">
@@ -1356,7 +1524,7 @@ h1.hero-name{
           <span class="op-fig"><img src="assets/op-fabric.jpg" alt="Handwoven Thai textile pattern" loading="lazy" decoding="async" width="900" height="900"></span>
           <h3>Digitizing Thai textile heritage</h3>
           <p>Translating handwoven Thai pattern into a machine-readable footprint that a digital Jacquard loom can reproduce — preserving the pattern independently of the hands that made it.</p>
-          <div class="res-tags"><span class="tag">Proof of concept</span></div>
+          <div class="res-tags"><span class="tag"><span class="tag-dot" aria-hidden="true"></span>Proof of concept</span></div>
           <button type="button" class="mono plate-cue" aria-haspopup="dialog" aria-label="View plate: Digitizing Thai textile heritage">VIEW PLATE ↗</button>
         </article>
       </div>
@@ -1365,11 +1533,22 @@ h1.hero-name{
     <div class="res-group">
       <div class="res-label reveal"><span class="mono">Data analysis in civil engineering</span></div>
       <div class="res-grid">
-        <article class="res-card plate-trigger reveal" data-plate="6">
+        <article class="res-card op-card plate-trigger reveal" data-plate="6">
           <span class="idx mono">D01</span>
+          <span class="op-mini" aria-hidden="true">
+            <svg viewBox="0 0 320 90">
+              <rect x="30" y="30" width="260" height="40"/>
+              <circle cx="60" cy="48" r="4"/>
+              <circle cx="105" cy="55" r="5"/>
+              <circle cx="150" cy="45" r="4"/>
+              <circle cx="195" cy="52" r="5"/>
+              <circle cx="240" cy="46" r="4"/>
+              <path class="op-mini-wave" d="M30,50 Q65,32 100,50 T170,50 T240,50 T290,50"/>
+            </svg>
+          </span>
           <h3>How measurement practice shapes concrete quality decisions</h3>
           <p>A statistical look at how everyday choices in ultrasonic testing practice can tip quality classifications — and repair decisions — one way or the other.</p>
-          <div class="res-tags"><span class="tag">Manuscript in preparation</span></div>
+          <div class="res-tags"><span class="tag"><span class="tag-dot" aria-hidden="true"></span>Manuscript in preparation</span></div>
           <button type="button" class="mono plate-cue" aria-haspopup="dialog" aria-label="View plate: How measurement practice shapes concrete quality decisions">VIEW PLATE ↗</button>
         </article>
       </div>
