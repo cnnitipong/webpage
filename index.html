@@ -491,48 +491,29 @@ h1.hero-name{
 .op-cta-note{color:var(--muted)}
 
 /* ============================================================
-   ONGOING — INVERTED INK BAND
-   the one dark passage on an otherwise white site. Full-bleed
-   background on the section; every override below is scoped
-   under #ongoing so .res-card / .tag / .mono etc. in the
-   RESEARCH section above stay untouched.
+   ONGOING — PINK AS THE ATTENTION DEVICE
+   same paper background as every other section; what marks this
+   one out is pink display type (section header, group labels,
+   card titles, ket glyphs). Owner-sanctioned exception to the
+   interaction-only rule for var(--chula) — display type only,
+   never body copy. Every override below is scoped under #ongoing
+   so .res-card / .tag / .mono etc. in the RESEARCH section above
+   stay untouched.
    ============================================================ */
-#ongoing{
-  background:var(--ink);
-  position:relative;
-}
-#ongoing::before,#ongoing::after{
-  content:"";position:absolute;left:0;right:0;height:1px;
-  background:rgba(255,255,255,.12);pointer-events:none;
-}
-#ongoing::before{top:0}
-#ongoing::after{bottom:0}
+#ongoing .sec-head{border-bottom-color:var(--chula)}
+#ongoing .sec-head::after{background:var(--chula)}
+#ongoing .sec-num{color:var(--chula)}
+#ongoing .sec-title{color:var(--chula)}
+#ongoing .sec-title:hover,#ongoing .sec-title.touch-glow{color:#c23f75}
 
-#ongoing .sec-head{border-bottom-color:#fbfbf9}
-#ongoing .sec-head::after{background:#fbfbf9}
-/* .sec-num is var(--ink) on light sections — the strongest tone in the
-   header, not a muted label. Inverted it must map to paper, not to grey,
-   or the ink band's section header reads weaker than every other one. */
-#ongoing .sec-num{color:#fbfbf9}
-#ongoing .sec-title{color:#fbfbf9}
-#ongoing .sec-title:hover,#ongoing .sec-title.touch-glow{color:var(--chula)}
-#ongoing .sec-note{color:#8f8f8a}
+#ongoing .res-label{color:var(--chula)}
+#ongoing .res-label .mono{color:var(--chula)}
+#ongoing .res-label::after{background:var(--chula)}
 
-#ongoing .res-label{color:#8f8f8a}
-#ongoing .res-label .mono{color:#8f8f8a}
-#ongoing .res-label::after{background:rgba(255,255,255,.16)}
+#ongoing .res-card h3{color:var(--chula);transition:color .35s var(--ease)}
+#ongoing .res-card:hover h3,#ongoing .res-card.touch-glow h3{color:#c23f75}
 
-#ongoing .res-grid{background:var(--ink);border-color:rgba(255,255,255,.16)}
-#ongoing .res-card{background:#1a1a19;box-shadow:0 0 0 1px rgba(255,255,255,.14)}
-#ongoing .res-card:hover,#ongoing .res-card.touch-glow{background:#212120}
-#ongoing .res-card .idx{color:#8f8f8a}
-#ongoing .res-card:hover .idx,#ongoing .res-card.touch-glow .idx{color:#fbfbf9}
-#ongoing .res-card h3{color:#fbfbf9;transition:color .35s var(--ease)}
-#ongoing .res-card:hover h3,#ongoing .res-card.touch-glow h3{color:var(--chula)}
-#ongoing .res-card p{color:#c9c9c6}
-
-#ongoing .tag{color:#8f8f8a;border-color:rgba(255,255,255,.16);position:relative;padding-left:22px}
-#ongoing .tag:hover,#ongoing .tag.touch-glow{color:var(--chula);border-color:var(--chula)}
+#ongoing .tag{position:relative;padding-left:22px}
 #ongoing .tag-dot{
   position:absolute;left:8px;top:50%;width:5px;height:5px;border-radius:50%;
   background:var(--chula);transform:translateY(-50%);
@@ -540,30 +521,16 @@ h1.hero-name{
 }
 @keyframes opTagPulse{0%,100%{opacity:.35}50%{opacity:1}}
 
-#ongoing .plate-cue{color:#8f8f8a}
-#ongoing .plate-cue:hover,#ongoing .plate-cue:focus-visible,#ongoing .plate-cue.touch-glow,
-#ongoing .plate-trigger:hover .plate-cue,#ongoing .plate-trigger.touch-glow .plate-cue{color:var(--chula)}
+#ongoing .op-glyph{color:var(--chula);opacity:.55;transition:color .4s var(--ease),opacity .4s var(--ease)}
+#ongoing .op-card:hover .op-glyph,#ongoing .op-card.touch-glow .op-glyph{opacity:1}
 
-#ongoing .op-glyph{color:rgba(255,255,255,.28)}
-#ongoing .op-card:hover .op-glyph,#ongoing .op-card.touch-glow .op-glyph{color:var(--chula)}
-
-#ongoing .op-fig,#ongoing .op-fig-sm{border-color:rgba(255,255,255,.16);background:#141210}
-#ongoing .op-fig img,#ongoing .op-fig-sm img{opacity:.85;transition:filter .6s var(--ease),opacity .5s var(--ease)}
-#ongoing .op-card:hover .op-fig img,#ongoing .op-card.touch-glow .op-fig img,
-#ongoing .op-card:hover .op-fig-sm img,#ongoing .op-card.touch-glow .op-fig-sm img{opacity:1}
-#ongoing .op-fig-cap{color:#8f8f8a}
-
-#ongoing .op-cta{border-top-color:#fbfbf9}
-#ongoing .op-cta-line{color:#c9c9c6}
-#ongoing .op-cta-note{color:#8f8f8a}
-#ongoing .op-cta .btn-primary{background:transparent;color:#fbfbf9;border-color:#fbfbf9}
-#ongoing .op-cta .btn-primary:hover,#ongoing .op-cta .btn-primary.touch-glow{background:var(--chula);border-color:var(--chula);color:#fff}
+#ongoing .op-cta-line{color:var(--chula)}
 
 /* living previews — mini animated figures, one per card (except the
-   two photo cards, which just get the dim/hover treatment above) */
+   two photo cards, which just get the standard grayscale→color hover) */
 #ongoing .op-mini{width:100%;aspect-ratio:320/90;margin:0;overflow:hidden;display:block}
 #ongoing .op-mini svg{display:block;width:100%;height:100%}
-#ongoing .op-mini svg *{fill:none;stroke:#fbfbf9;stroke-width:1.2;stroke-linecap:round;stroke-linejoin:round}
+#ongoing .op-mini svg *{fill:none;stroke:var(--ink);stroke-width:1.2;stroke-linecap:round;stroke-linejoin:round}
 /* static drafting furniture — pitch circles, datum lines, ticks */
 #ongoing .op-mini .op-mini-faint{opacity:.3}
 /* view-box (not fill-box): the origin is stated in viewBox units so it is
@@ -574,7 +541,7 @@ h1.hero-name{
 #ongoing .op-mini .op-mini-dot{fill:var(--chula);stroke:none;animation:opMiniDot 3s ease-in-out infinite}
 @keyframes opMiniDot{0%,100%{opacity:.25}50%{opacity:1}}
 #ongoing .op-mini .op-mini-diag{animation:opMiniDiag 4s ease-in-out infinite}
-@keyframes opMiniDiag{0%,100%{stroke:#fbfbf9}50%{stroke:var(--chula)}}
+@keyframes opMiniDiag{0%,100%{stroke:var(--ink)}50%{stroke:var(--chula)}}
 #ongoing .op-mini .op-mini-arc{stroke:var(--chula);transform-box:fill-box;transform-origin:50% 0%;animation:opMiniRipple 4s ease-out infinite}
 @keyframes opMiniRipple{0%{opacity:.85;transform:scale(1)}100%{opacity:0;transform:scale(1.22)}}
 #ongoing .op-mini .op-mini-crack{stroke:var(--chula);stroke-dasharray:2 2;opacity:.7;animation:opMiniCrack 2.6s ease-in-out infinite}
