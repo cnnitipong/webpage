@@ -8,14 +8,15 @@
 <meta name="author" content="Nitipong Praphaphankul">
 <meta name="theme-color" content="#fbfbf9">
 <meta property="og:type" content="website">
+<meta property="og:url" content="https://webpage-sigma-ruby.vercel.app/">
 <meta property="og:title" content="Nitipong Praphaphankul — Structural Engineer, Department of Architecture, Chulalongkorn University">
 <meta property="og:description" content="A structural engineer teaching at the Department of Architecture, Chulalongkorn University — structural health monitoring, non-destructive testing, and machine learning for the built environment.">
-<meta property="og:image" content="assets/profile.jpg">
+<meta property="og:image" content="https://webpage-sigma-ruby.vercel.app/assets/profile.jpg">
 <meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Nitipong Praphaphankul — Structural Engineer, Department of Architecture">
 <meta name="twitter:description" content="Structural engineering, computation and architecture — monitoring, non-destructive testing and machine learning for the built environment.">
-<meta name="twitter:image" content="assets/profile.jpg">
+<meta name="twitter:image" content="https://webpage-sigma-ruby.vercel.app/assets/profile.jpg">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23141414'/%3E%3Cpath d='M10 23V9l12 14V9' fill='none' stroke='%23ffffff' stroke-width='2.6' stroke-linecap='square' stroke-linejoin='miter'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -182,8 +183,8 @@ a.accent:hover,a.accent.touch-glow{color:var(--chula);text-decoration-color:var(
   padding-right:calc(var(--pad) + env(safe-area-inset-right));
 }
 .nav-inner{
-  display:flex;align-items:center;justify-content:space-between;gap:24px;
-  height:70px;
+  display:flex;align-items:center;justify-content:space-between;gap:20px;
+  height:70px;flex-wrap:nowrap;
 }
 .brand{display:flex;align-items:center;gap:12px;font-family:var(--font-display);font-weight:600;letter-spacing:0;font-size:1.04rem;color:var(--ink)}
 .brand-mark{
@@ -194,10 +195,10 @@ a.accent:hover,a.accent.touch-glow{color:var(--chula);text-decoration-color:var(
 }
 .brand:hover .brand-mark,.brand.touch-glow .brand-mark{background:var(--chula);border-color:var(--chula);color:#fff}
 .brand-txt{white-space:nowrap}
-.nav-links{display:flex;align-items:center;gap:clamp(14px,2vw,30px)}
+.nav-links{display:flex;align-items:center;gap:clamp(12px,1.6vw,20px);flex:0 1 auto}
 .nav-links a{
   font-family:var(--font-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;
-  color:var(--muted);position:relative;padding:6px 0;
+  color:var(--muted);position:relative;padding:6px 0;white-space:nowrap;
   transition:color .28s var(--ease);
 }
 .nav-links a::after{
@@ -317,7 +318,7 @@ h1.hero-name{
   filter:grayscale(1) contrast(1.02);
   transition:filter .7s var(--ease);
 }
-.portrait-frame:hover img{filter:grayscale(0) contrast(1)}
+.portrait-frame:hover img,.portrait-frame.touch-glow img{filter:grayscale(0) contrast(1)}
 .scroll-cue{
   position:absolute;left:var(--pad);bottom:clamp(20px,4vh,38px);
   display:flex;align-items:center;gap:12px;color:var(--muted);
@@ -388,7 +389,7 @@ h1.hero-name{
   border:1px solid var(--ink);
   transition:background-color .3s var(--ease);
 }
-.tl-item:hover::before{background:var(--ink)}
+.tl-item:hover::before,.tl-item.touch-glow::before{background:var(--ink)}
 .tl-when{padding-top:3px}
 .tl-item h3{
   font-family:var(--font-display);font-weight:500;font-size:clamp(1.15rem,2vw,1.45rem);
@@ -408,7 +409,7 @@ h1.hero-name{
   padding:clamp(24px,3vw,32px);display:flex;flex-direction:column;gap:14px;
   transition:border-color .35s var(--ease),background-color .35s var(--ease);
 }
-.edu-card:hover{border-color:var(--ink);background:var(--surface-2)}
+.edu-card:hover,.edu-card.touch-glow{border-color:var(--ink);background:var(--surface-2)}
 .edu-deg{font-family:var(--font-display);font-weight:600;font-size:1.45rem;letter-spacing:-.01em;line-height:1.1}
 .edu-school{color:var(--ink);font-size:.98rem;font-weight:400}
 .edu-card p{color:var(--muted);font-size:.9rem;line-height:1.7;margin-top:auto;padding-top:12px;border-top:1px solid var(--line)}
@@ -425,16 +426,16 @@ h1.hero-name{
 .res-group + .res-group{margin-top:clamp(40px,5vw,60px)}
 .res-label{display:flex;align-items:center;gap:16px;margin-bottom:26px}
 .res-label::after{content:"";flex:1;height:1px;background:var(--line)}
-.res-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
-.res-grid::after{content:"";background:var(--bg);grid-column:auto / -1}
+.res-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1px;background:var(--bg);border:1px solid var(--line)}
+.res-card{box-shadow:0 0 0 1px var(--line)}
 .res-card{
   background:var(--surface);padding:clamp(26px,3vw,34px);
   display:flex;flex-direction:column;gap:16px;position:relative;
   transition:background-color .4s var(--ease);
 }
-.res-card:hover{background:var(--surface-2)}
+.res-card:hover,.res-card.touch-glow{background:var(--surface-2)}
 .res-card .idx{font-family:var(--font-mono);font-size:11px;color:var(--muted);letter-spacing:.1em}
-.res-card:hover .idx{color:var(--ink)}
+.res-card:hover .idx,.res-card.touch-glow .idx{color:var(--ink)}
 .res-card h3{
   font-family:var(--font-display);font-weight:500;font-size:1.22rem;
   line-height:1.4;letter-spacing:-.005em;
@@ -451,6 +452,42 @@ h1.hero-name{
 .tag.is-pi:hover,.tag.is-pi.touch-glow{color:var(--chula);border-color:var(--chula);background:transparent}
 
 /* ============================================================
+   ONGOING PROJECTS
+   ============================================================ */
+.op-card{position:relative}
+.op-glyph{
+  display:block;font-family:var(--font-display);font-style:italic;font-weight:400;
+  font-size:clamp(2.1rem,4.6vw,3rem);line-height:1;color:var(--line-strong);
+  transition:color .4s var(--ease);
+}
+.op-card:hover .op-glyph,.op-card.touch-glow .op-glyph{color:var(--chula)}
+.op-fig{display:block;margin:0 0 4px;border:1px solid var(--line);overflow:hidden;background:var(--surface-2)}
+/* fixed band height + cover: the archival strip is 7:1, so at height:auto it
+   collapsed to a ~45px hairline. Cropped left-aligned it reads as a contact sheet. */
+.op-fig img{
+  width:100%;height:clamp(112px,13vw,140px);
+  object-fit:cover;object-position:50% 50%;
+  display:block;filter:grayscale(1);transition:filter .6s var(--ease);
+}
+.op-fig-strip img{object-position:0 50%}
+.op-card:hover .op-fig img,.op-card.touch-glow .op-fig img{filter:grayscale(0)}
+.op-media-extra{display:flex;align-items:center;gap:10px;margin:-6px 0 2px}
+.op-fig-sm{width:88px;flex:none;border:1px solid var(--line);overflow:hidden;display:block}
+.op-fig-sm img{width:100%;height:80px;object-fit:cover;object-position:0 50%;display:block;filter:grayscale(1);transition:filter .6s var(--ease)}
+.op-card:hover .op-fig-sm img,.op-card.touch-glow .op-fig-sm img{filter:grayscale(0)}
+.op-fig-cap{color:var(--muted)}
+.op-cta{
+  margin-top:clamp(40px,5vw,60px);padding-top:clamp(28px,4vw,42px);
+  border-top:1px solid var(--ink);
+  display:flex;flex-direction:column;align-items:flex-start;gap:16px;
+}
+.op-cta-line{
+  font-family:var(--font-display);font-style:italic;font-weight:400;
+  font-size:clamp(1.25rem,2.6vw,1.7rem);color:var(--soft);letter-spacing:-.005em;
+}
+.op-cta-note{color:var(--muted)}
+
+/* ============================================================
    PUBLICATIONS
    ============================================================ */
 .pub-year{margin-bottom:clamp(30px,4vw,44px)}
@@ -461,7 +498,7 @@ h1.hero-name{
   font-variant-numeric:tabular-nums;
   transition:color .4s var(--ease);
 }
-.pub-year:hover > h3{color:#9a9a94}
+.pub-year:hover > h3,.pub-year.touch-glow > h3{color:#9a9a94}
 .pub{border-top:1px solid var(--line)}
 .pub:last-child{border-bottom:1px solid var(--line)}
 .pub-btn{
@@ -515,6 +552,28 @@ h1.hero-name{
   border-left:1px solid var(--ink);padding-left:18px;
 }
 .pub-cite em{color:var(--ink);font-style:italic}
+.pub-doi{
+  display:flex;flex-wrap:wrap;gap:10px 14px;align-items:center;
+  margin:14px 0 0 19px;
+}
+.doi-chip{
+  position:relative;
+  display:inline-flex;align-items:center;gap:6px;min-height:32px;
+  font-family:var(--font-mono);font-size:9.5px;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--ink);border:1px solid var(--ink);padding:6px 11px;border-radius:0;
+  white-space:nowrap;
+  transition:color .3s var(--ease),border-color .3s var(--ease);
+}
+/* chip stays visually small inside the row, but the hit area is a full 44px */
+.doi-chip::after{
+  content:"";position:absolute;left:0;right:0;top:50%;
+  transform:translateY(-50%);height:44px;
+}
+.doi-chip:hover,.doi-chip.touch-glow{color:var(--chula);border-color:var(--chula)}
+.doi-plain{
+  font-family:var(--font-mono);font-size:10.5px;letter-spacing:.02em;color:var(--muted);
+  min-width:0;max-width:100%;overflow-wrap:anywhere;word-break:break-word;
+}
 
 /* ============================================================
    GALLERY
@@ -575,9 +634,12 @@ h1.hero-name{
   touch-action:pan-y;
 }
 #lightbox.open{opacity:1;visibility:visible}
-.lb-stage{position:relative;max-width:min(1100px,100%);max-height:100%;display:flex;flex-direction:column;gap:16px;align-items:center}
+.lb-stage{position:relative;max-width:min(1100px,100%);max-height:100%;display:flex;flex-direction:column;gap:16px;align-items:center;min-height:0}
+/* the caption + SHARE row live below the image, so the image is capped short of
+   the viewport and is allowed to shrink (min-height:0) rather than push them off */
 .lb-stage img{
-  max-width:100%;max-height:74svh;width:auto;object-fit:contain;
+  max-width:100%;max-height:68svh;width:auto;object-fit:contain;
+  min-height:0;flex:0 1 auto;
   border:1px solid var(--ink);border-radius:0;
   filter:none;
   transform:scale(.98);opacity:0;
@@ -606,6 +668,17 @@ h1.hero-name{
 .lb-close svg{width:15px;height:15px}
 .lb-count{position:absolute;bottom:clamp(12px,3vw,26px);left:50%;transform:translateX(-50%)}
 .lb-count b{color:var(--ink);font-weight:500}
+.lb-share{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:8px 16px;margin-top:2px}
+.lb-share-btns{display:flex;align-items:center;gap:10px}
+.lb-share-btn{
+  width:44px;height:44px;min-width:44px;min-height:44px;border-radius:0;
+  border:1px solid var(--ink);display:grid;place-items:center;background:#fff;color:var(--ink);
+  transition:background-color .3s var(--ease),color .3s var(--ease),border-color .3s var(--ease);
+}
+.lb-share-btn:hover,.lb-share-btn.touch-glow{color:#fff;background:var(--chula);border-color:var(--chula)}
+.lb-share-btn svg{width:18px;height:18px}
+.lb-share-status{color:var(--ink);min-height:1em;opacity:0;transition:opacity .25s var(--ease);overflow-wrap:anywhere}
+.lb-share-status.show{opacity:1}
 
 /* ============================================================
    SKILLS
@@ -737,12 +810,25 @@ h1.hero-name{
 /* ============================================================
    RESPONSIVE
    ============================================================ */
+/* NAV FIT — eight links plus "Ongoing" no longer clear the 1200px bar below the
+   full canvas width, so tighten the row before anything wraps or clips. */
+@media (max-width:1200px){
+  .nav-inner{gap:16px}
+  .nav-links{gap:clamp(11px,1.5vw,20px)}
+}
+@media (max-width:1180px){
+  /* mark alone carries the brand — the full name returns above 1180px */
+  .brand-txt{display:none}
+}
+@media (max-width:960px){
+  .nav-links a{letter-spacing:.08em}
+  .nav-cta{letter-spacing:.08em;padding:9px 12px}
+}
 @media (max-width:1024px){
   .hero-grid{grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:36px}
   .hero-portrait{max-width:330px}
   .edu-grid{grid-template-columns:1fr 1fr}
   .masonry{columns:2}
-  .nav-links{gap:16px}
   .about-grid{grid-template-columns:1fr;gap:30px}
   .about-aside{border-left:0;border-top:1px solid var(--line);padding-left:0;padding-top:26px}
 }
@@ -773,7 +859,14 @@ h1.hero-name{
   .stats{grid-template-columns:1fr}
   .brand-txt{display:none}
   .btn{flex:1 1 auto;justify-content:center}
-  .lb-stage img{max-height:62svh}
+  .lb-stage img{max-height:56svh}
+  .op-cta .btn{flex:0 0 auto}
+}
+/* short / landscape viewports: keep the caption + SHARE row on screen */
+@media (max-height:560px){
+  .lb-stage{gap:10px}
+  .lb-stage img{max-height:46svh}
+  .lb-count{display:none}
 }
 
 /* ============================================================
@@ -817,6 +910,7 @@ h1.hero-name{
       <a href="#experience">Experience</a>
       <a href="#education">Education</a>
       <a href="#research">Research</a>
+      <a href="#ongoing">Ongoing</a>
       <a href="#publications">Publications</a>
       <a href="#activities">Activities</a>
       <a href="#skills">Skills</a>
@@ -835,10 +929,11 @@ h1.hero-name{
     <li><a href="#experience"><em>02</em>Experience</a></li>
     <li><a href="#education"><em>03</em>Education</a></li>
     <li><a href="#research"><em>04</em>Research</a></li>
-    <li><a href="#publications"><em>05</em>Publications</a></li>
-    <li><a href="#activities"><em>06</em>Activities</a></li>
-    <li><a href="#skills"><em>07</em>Skills</a></li>
-    <li><a href="#contact"><em>08</em>Contact</a></li>
+    <li><a href="#ongoing"><em>05</em>Ongoing</a></li>
+    <li><a href="#publications"><em>06</em>Publications</a></li>
+    <li><a href="#activities"><em>07</em>Activities</a></li>
+    <li><a href="#skills"><em>08</em>Skills</a></li>
+    <li><a href="#contact"><em>09</em>Contact</a></li>
   </ol>
   <div class="menu-foot">
     <span class="mono">nitipong.pr@chula.ac.th</span>
@@ -1068,11 +1163,94 @@ h1.hero-name{
   </div>
 </section>
 
-<!-- ============ 05 PUBLICATIONS ============ -->
+<!-- ============ 05 ONGOING PROJECTS ============ -->
+<section id="ongoing" aria-labelledby="ong-t">
+  <div class="wrap">
+    <header class="sec-head reveal">
+      <span class="mono sec-num">05 / Ongoing</span>
+      <h2 class="sec-title" id="ong-t">Ongoing projects</h2>
+      <span class="sec-note mono">Unpublished work — details on request</span>
+    </header>
+
+    <div class="res-group">
+      <div class="res-label reveal"><span class="mono">Quantum computing × structures</span></div>
+      <div class="res-grid">
+        <article class="res-card op-card reveal">
+          <span class="idx mono">Q01</span>
+          <span class="op-glyph" aria-hidden="true">|ψ⟩</span>
+          <h3>Quantum optimization of reciprocal structures</h3>
+          <p>Exploring quantum annealing as a search engine for the discrete geometry of self-supporting reciprocal frames — where classical solvers drown in combinatorics.</p>
+          <div class="res-tags"><span class="tag">Manuscript in preparation</span></div>
+        </article>
+        <article class="res-card op-card reveal" style="transition-delay:.08s">
+          <span class="idx mono">Q02</span>
+          <span class="op-glyph" aria-hidden="true">|0⟩</span>
+          <h3>Quantum-ready truss design</h3>
+          <p>Recasting classical truss sizing as a problem a quantum annealer can natively solve, with a statistically controlled benchmark against the metaheuristics engineers use today.</p>
+          <div class="res-tags"><span class="tag">Manuscript in preparation</span></div>
+        </article>
+        <article class="res-card op-card reveal" style="transition-delay:.16s">
+          <span class="idx mono">Q03</span>
+          <span class="op-glyph" aria-hidden="true">|1⟩</span>
+          <h3>Quantum machine learning for bridge inspection</h3>
+          <p>Asking whether quantum-native representations of eddy-current signals can see subsurface damage in steel bridge decks that classical features miss.</p>
+          <div class="res-tags"><span class="tag">Manuscript in preparation</span></div>
+        </article>
+      </div>
+    </div>
+
+    <div class="res-group">
+      <div class="res-label reveal"><span class="mono">Digital heritage &amp; 3D archives</span></div>
+      <div class="res-grid">
+        <article class="res-card op-card reveal">
+          <span class="idx mono">Q04</span>
+          <span class="op-fig op-fig-strip"><img src="assets/op-archival.jpg" alt="Contact sheet of archival monochrome photographs of Thai pagodas" loading="lazy" decoding="async" width="1400" height="199"></span>
+          <span class="op-media-extra">
+            <span class="op-fig-sm"><img src="assets/op-pagoda-3d.jpg" alt="Study renders of reconstructed pagoda geometry in 3D" loading="lazy" decoding="async" width="1000" height="808"></span>
+            <span class="op-fig-cap mono">study renders</span>
+          </span>
+          <h3>Rebuilding lost pagodas from archival photographs</h3>
+          <p>Century-old monochrome photographs are often the only record of Thailand's lost or altered pagodas. This project turns single archival views into measurable 3D geometry for conservation and archives.</p>
+          <div class="res-tags"><span class="tag">Conference manuscript in preparation</span></div>
+        </article>
+        <article class="res-card op-card reveal" style="transition-delay:.08s">
+          <span class="idx mono">Q05</span>
+          <span class="op-fig"><img src="assets/op-fabric.jpg" alt="Handwoven Thai textile pattern" loading="lazy" decoding="async" width="900" height="900"></span>
+          <h3>Digitizing Thai textile heritage</h3>
+          <p>Translating handwoven Thai pattern into a machine-readable footprint that a digital Jacquard loom can reproduce — preserving the pattern independently of the hands that made it.</p>
+          <div class="res-tags"><span class="tag">Proof of concept</span></div>
+        </article>
+      </div>
+    </div>
+
+    <div class="res-group">
+      <div class="res-label reveal"><span class="mono">Data analysis in civil engineering</span></div>
+      <div class="res-grid">
+        <article class="res-card reveal">
+          <span class="idx mono">D01</span>
+          <h3>How measurement practice shapes concrete quality decisions</h3>
+          <p>A statistical look at how everyday choices in ultrasonic testing practice can tip quality classifications — and repair decisions — one way or the other.</p>
+          <div class="res-tags"><span class="tag">Manuscript in preparation</span></div>
+        </article>
+      </div>
+    </div>
+
+    <div class="op-cta reveal">
+      <p class="op-cta-line">Interested in any of these directions?</p>
+      <button type="button" class="btn btn-primary" data-contact-open aria-haspopup="dialog">
+        Start a conversation
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M4 12L12 4M6 4h6v6"/></svg>
+      </button>
+      <p class="mono op-cta-note">Manuscripts under preparation; specifics shared in conversation.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 06 PUBLICATIONS ============ -->
 <section id="publications" aria-labelledby="pub-t">
   <div class="wrap">
     <header class="sec-head reveal">
-      <span class="mono sec-num">05 / Publications</span>
+      <span class="mono sec-num">06 / Publications</span>
       <h2 class="sec-title" id="pub-t">Selected work</h2>
       <span class="sec-note"><span class="accent">6</span> journal · <span class="accent">3</span> conference</span>
     </header>
@@ -1089,7 +1267,10 @@ h1.hero-name{
           <span class="pub-plus" aria-hidden="true"></span>
         </button>
         <div class="pub-panel" id="p1" role="region">
-          <div><p class="pub-cite">Zain, M., Kupwiwat, C., Prasittisopin, L., Praphaphankul, N., Kaewunruen, S., &amp; Zaidi, M.&nbsp;A.&nbsp;A. (2026). Framework for Developing Resistivity Models to Identify Potential Safety Threats in Embankment Dams. <em>Engineered Science, 39</em>, 2054.</p></div>
+          <div>
+            <p class="pub-cite">Zain, M., Kupwiwat, C., Prasittisopin, L., Praphaphankul, N., Kaewunruen, S., &amp; Zaidi, M.&nbsp;A.&nbsp;A. (2026). Framework for Developing Resistivity Models to Identify Potential Safety Threats in Embankment Dams. <em>Engineered Science, 39</em>, 2054.</p>
+            <p class="pub-doi"><a class="doi-chip" href="https://doi.org/10.30919/es2054" target="_blank" rel="noopener">DOI ↗</a><span class="doi-plain">10.30919/es2054</span></p>
+          </div>
         </div>
       </article>
       <article class="pub">
@@ -1101,7 +1282,10 @@ h1.hero-name{
           <span class="pub-plus" aria-hidden="true"></span>
         </button>
         <div class="pub-panel" id="p2" role="region">
-          <div><p class="pub-cite">Praphaphankul, N., Koohathong, P., Tiprak, K., Lenwari, A., &amp; Thongchom, C. (2026). Axial behavior of hollow concrete columns with GFRP and hybrid reinforcement. <em>Structures, 91</em>, 112550. Elsevier.</p></div>
+          <div>
+            <p class="pub-cite">Praphaphankul, N., Koohathong, P., Tiprak, K., Lenwari, A., &amp; Thongchom, C. (2026). Axial behavior of hollow concrete columns with GFRP and hybrid reinforcement. <em>Structures, 91</em>, 112550. Elsevier.</p>
+            <p class="pub-doi"><a class="doi-chip" href="https://doi.org/10.1016/j.istruc.2026.112550" target="_blank" rel="noopener">DOI ↗</a><span class="doi-plain">10.1016/j.istruc.2026.112550</span></p>
+          </div>
         </div>
       </article>
       <article class="pub">
@@ -1113,7 +1297,10 @@ h1.hero-name{
           <span class="pub-plus" aria-hidden="true"></span>
         </button>
         <div class="pub-panel" id="p3" role="region">
-          <div><p class="pub-cite">Praphaphankul, N., Prayoonwet, W., Tiprak, K., Akutsu, A., &amp; Sasaki, E. (2026). Accessible remote sensing of bridge movement monitoring with UAV-based SfM photogrammetry and unsupervised machine learning. <em>Structure and Infrastructure Engineering</em>, 1–26. Taylor &amp; Francis.</p></div>
+          <div>
+            <p class="pub-cite">Praphaphankul, N., Prayoonwet, W., Tiprak, K., Akutsu, A., &amp; Sasaki, E. (2026). Accessible remote sensing of bridge movement monitoring with UAV-based SfM photogrammetry and unsupervised machine learning. <em>Structure and Infrastructure Engineering</em>, 1–26. Taylor &amp; Francis.</p>
+            <p class="pub-doi"><a class="doi-chip" href="https://doi.org/10.1080/15732479.2026.2698097" target="_blank" rel="noopener">DOI ↗</a><span class="doi-plain">10.1080/15732479.2026.2698097</span></p>
+          </div>
         </div>
       </article>
     </div>
@@ -1147,7 +1334,10 @@ h1.hero-name{
           <span class="pub-plus" aria-hidden="true"></span>
         </button>
         <div class="pub-panel" id="p5" role="region">
-          <div><p class="pub-cite">Praphaphankul, N., Akutsu, A., &amp; Sasaki, E. (2024). Numerical study of phase space analysis for the development of subsurface crack detection method using pulsed eddy current. <em>Structure and Infrastructure Engineering</em>, 1–21.</p></div>
+          <div>
+            <p class="pub-cite">Praphaphankul, N., Akutsu, A., &amp; Sasaki, E. (2024). Numerical study of phase space analysis for the development of subsurface crack detection method using pulsed eddy current. <em>Structure and Infrastructure Engineering</em>, 1–21.</p>
+            <p class="pub-doi"><a class="doi-chip" href="https://doi.org/10.1080/15732479.2024.2413637" target="_blank" rel="noopener">DOI ↗</a><span class="doi-plain">10.1080/15732479.2024.2413637</span></p>
+          </div>
         </div>
       </article>
       <article class="pub">
@@ -1159,7 +1349,10 @@ h1.hero-name{
           <span class="pub-plus" aria-hidden="true"></span>
         </button>
         <div class="pub-panel" id="p6" role="region">
-          <div><p class="pub-cite">Praphaphankul, N., Akutsu, A., &amp; Sasaki, E. (2024). Enhancing Subsurface Crack Detection in Orthotropic Steel Decks. <em>EASEC-18</em>, 453–460. Springer.</p></div>
+          <div>
+            <p class="pub-cite">Praphaphankul, N., Akutsu, A., &amp; Sasaki, E. (2024). Enhancing Subsurface Crack Detection in Orthotropic Steel Decks. <em>EASEC-18</em>, 453–460. Springer.</p>
+            <p class="pub-doi"><a class="doi-chip" href="https://doi.org/10.1007/978-981-96-9917-9_59" target="_blank" rel="noopener">DOI ↗</a><span class="doi-plain">10.1007/978-981-96-9917-9_59</span></p>
+          </div>
         </div>
       </article>
       <article class="pub">
@@ -1171,7 +1364,10 @@ h1.hero-name{
           <span class="pub-plus" aria-hidden="true"></span>
         </button>
         <div class="pub-panel" id="p7" role="region">
-          <div><p class="pub-cite">Praphaphankul, N. (2024). Enhancing root-deck crack detection in orthotropic steel decks. <em>IABSE Symposium Manchester 2024</em>.</p></div>
+          <div>
+            <p class="pub-cite">Praphaphankul, N. (2024). Enhancing root-deck crack detection in orthotropic steel decks. <em>IABSE Symposium Manchester 2024</em>.</p>
+            <p class="pub-doi"><a class="doi-chip" href="https://doi.org/10.2749/manchester.2024.0822" target="_blank" rel="noopener">DOI ↗</a><span class="doi-plain">10.2749/manchester.2024.0822</span></p>
+          </div>
         </div>
       </article>
     </div>
@@ -1188,7 +1384,10 @@ h1.hero-name{
           <span class="pub-plus" aria-hidden="true"></span>
         </button>
         <div class="pub-panel" id="p8" role="region">
-          <div><p class="pub-cite">Praphaphankul, N., Akutsu, A., &amp; Sasaki, E. (2023). Numerical study for development of subsurface crack detection using pulsed eddy current and swept frequency eddy current. <em>Structure and Infrastructure Engineering</em>, 1–16.</p></div>
+          <div>
+            <p class="pub-cite">Praphaphankul, N., Akutsu, A., &amp; Sasaki, E. (2023). Numerical study for development of subsurface crack detection using pulsed eddy current and swept frequency eddy current. <em>Structure and Infrastructure Engineering</em>, 1–16.</p>
+            <p class="pub-doi"><a class="doi-chip" href="https://doi.org/10.1080/15732479.2023.2218351" target="_blank" rel="noopener">DOI ↗</a><span class="doi-plain">10.1080/15732479.2023.2218351</span></p>
+          </div>
         </div>
       </article>
       <article class="pub">
@@ -1200,18 +1399,21 @@ h1.hero-name{
           <span class="pub-plus" aria-hidden="true"></span>
         </button>
         <div class="pub-panel" id="p9" role="region">
-          <div><p class="pub-cite">Thongchom, C., et&nbsp;al., including Praphaphankul, N. (2023). Experimental Investigation on Post-Fire Mechanical Properties of GFRP Rebars. <em>Polymers</em>.</p></div>
+          <div>
+            <p class="pub-cite">Thongchom, C., et&nbsp;al., including Praphaphankul, N. (2023). Experimental Investigation on Post-Fire Mechanical Properties of GFRP Rebars. <em>Polymers</em>.</p>
+            <p class="pub-doi"><a class="doi-chip" href="https://doi.org/10.3390/polym15132925" target="_blank" rel="noopener">DOI ↗</a><span class="doi-plain">10.3390/polym15132925</span></p>
+          </div>
         </div>
       </article>
     </div>
   </div>
 </section>
 
-<!-- ============ 06 ACTIVITIES ============ -->
+<!-- ============ 07 ACTIVITIES ============ -->
 <section id="activities" aria-labelledby="act-t">
   <div class="wrap">
     <header class="sec-head reveal">
-      <span class="mono sec-num">06 / Activities</span>
+      <span class="mono sec-num">07 / Activities</span>
       <h2 class="sec-title" id="act-t">Life around the research</h2>
       <span class="sec-note">Bangkok · Tokyo · in the field</span>
     </header>
@@ -1226,55 +1428,55 @@ h1.hero-name{
     </div>
 
     <div class="masonry reveal" id="gallery">
-      <button class="card" data-cat="Research" data-src="assets/act-01.jpg" data-cap="Conference presentation">
+      <button class="card" id="act-01" data-cat="Research" data-src="assets/act-01.jpg" data-cap="Conference presentation">
         <span class="fig"><img src="assets/act-01.jpg" alt="Conference presentation" loading="lazy" decoding="async"><span class="cap"><i>Research</i><b>Conference presentation</b></span></span>
       </button>
-      <button class="card" data-cat="Field" data-src="assets/act-02.jpg" data-cap="Night field survey · Tokyo">
+      <button class="card" id="act-02" data-cat="Field" data-src="assets/act-02.jpg" data-cap="Night field survey · Tokyo">
         <span class="fig"><img src="assets/act-02.jpg" alt="Night field survey in Tokyo" loading="lazy" decoding="async"><span class="cap"><i>Field</i><b>Night field survey · Tokyo</b></span></span>
       </button>
-      <button class="card" data-cat="Community" data-src="assets/act-03.jpg" data-cap="Winter in Japan">
+      <button class="card" id="act-03" data-cat="Community" data-src="assets/act-03.jpg" data-cap="Winter in Japan">
         <span class="fig"><img src="assets/act-03.jpg" alt="Winter in Japan" loading="lazy" decoding="async"><span class="cap"><i>Community</i><b>Winter in Japan</b></span></span>
       </button>
-      <button class="card" data-cat="Community" data-src="assets/act-04.jpg" data-cap="Student association trip">
+      <button class="card" id="act-04" data-cat="Community" data-src="assets/act-04.jpg" data-cap="Student association trip">
         <span class="fig"><img src="assets/act-04.jpg" alt="Student association trip" loading="lazy" decoding="async"><span class="cap"><i>Community</i><b>Student association trip</b></span></span>
       </button>
-      <button class="card" data-cat="Teaching" data-src="assets/act-05.jpg" data-cap="Guest lecture">
+      <button class="card" id="act-05" data-cat="Teaching" data-src="assets/act-05.jpg" data-cap="Guest lecture">
         <span class="fig"><img src="assets/act-05.jpg" alt="Guest lecture" loading="lazy" decoding="async"><span class="cap"><i>Teaching</i><b>Guest lecture</b></span></span>
       </button>
-      <button class="card" data-cat="Teaching" data-src="assets/act-06.jpg" data-cap="Design-build studio with students">
+      <button class="card" id="act-06" data-cat="Teaching" data-src="assets/act-06.jpg" data-cap="Design-build studio with students">
         <span class="fig"><img src="assets/act-06.jpg" alt="Design-build studio with students" loading="lazy" decoding="async"><span class="cap"><i>Teaching</i><b>Design-build studio with students</b></span></span>
       </button>
-      <button class="card" data-cat="Community" data-src="assets/act-07.jpg" data-cap="Lab gathering">
+      <button class="card" id="act-07" data-cat="Community" data-src="assets/act-07.jpg" data-cap="Lab gathering">
         <span class="fig"><img src="assets/act-07.jpg" alt="Lab gathering" loading="lazy" decoding="async"><span class="cap"><i>Community</i><b>Lab gathering</b></span></span>
       </button>
-      <button class="card" data-cat="Community" data-src="assets/act-08.jpg" data-cap="Ski season · Japan">
+      <button class="card" id="act-08" data-cat="Community" data-src="assets/act-08.jpg" data-cap="Ski season · Japan">
         <span class="fig"><img src="assets/act-08.jpg" alt="Ski season in Japan" loading="lazy" decoding="async"><span class="cap"><i>Community</i><b>Ski season · Japan</b></span></span>
       </button>
-      <button class="card" data-cat="Research" data-src="assets/act-09.jpg" data-cap="Research collaboration">
+      <button class="card" id="act-09" data-cat="Research" data-src="assets/act-09.jpg" data-cap="Research collaboration">
         <span class="fig"><img src="assets/act-09.jpg" alt="Research collaboration" loading="lazy" decoding="async"><span class="cap"><i>Research</i><b>Research collaboration</b></span></span>
       </button>
-      <button class="card" data-cat="Research" data-src="assets/act-10.jpg" data-cap="NDT lab · sensing hardware">
+      <button class="card" id="act-10" data-cat="Research" data-src="assets/act-10.jpg" data-cap="NDT lab · sensing hardware">
         <span class="fig"><img src="assets/act-10.jpg" alt="Non-destructive testing laboratory sensing hardware" loading="lazy" decoding="async"><span class="cap"><i>Research</i><b>NDT lab · sensing hardware</b></span></span>
       </button>
-      <button class="card" data-cat="Research" data-src="assets/act-11.jpg" data-cap="Pavilion prototype">
+      <button class="card" id="act-11" data-cat="Research" data-src="assets/act-11.jpg" data-cap="Pavilion prototype">
         <span class="fig"><img src="assets/act-11.jpg" alt="Pavilion prototype" loading="lazy" decoding="async"><span class="cap"><i>Research</i><b>Pavilion prototype</b></span></span>
       </button>
-      <button class="card" data-cat="Research" data-src="assets/act-12.jpg" data-cap="Timber pavilion build">
+      <button class="card" id="act-12" data-cat="Research" data-src="assets/act-12.jpg" data-cap="Timber pavilion build">
         <span class="fig"><img src="assets/act-12.jpg" alt="Timber pavilion build" loading="lazy" decoding="async"><span class="cap"><i>Research</i><b>Timber pavilion build</b></span></span>
       </button>
-      <button class="card" data-cat="Teaching" data-src="assets/act-13.jpg" data-cap="Workshop with students">
+      <button class="card" id="act-13" data-cat="Teaching" data-src="assets/act-13.jpg" data-cap="Workshop with students">
         <span class="fig"><img src="assets/act-13.jpg" alt="Workshop with students" loading="lazy" decoding="async"><span class="cap"><i>Teaching</i><b>Workshop with students</b></span></span>
       </button>
-      <button class="card" data-cat="Research" data-src="assets/act-14.jpg" data-cap="Research seminar">
+      <button class="card" id="act-14" data-cat="Research" data-src="assets/act-14.jpg" data-cap="Research seminar">
         <span class="fig"><img src="assets/act-14.jpg" alt="Research seminar" loading="lazy" decoding="async"><span class="cap"><i>Research</i><b>Research seminar</b></span></span>
       </button>
-      <button class="card" data-cat="Milestones" data-src="assets/act-15.jpg" data-cap="Commencement · Tokyo Tech">
+      <button class="card" id="act-15" data-cat="Milestones" data-src="assets/act-15.jpg" data-cap="Commencement · Tokyo Tech">
         <span class="fig"><img src="assets/act-15.jpg" alt="Commencement ceremony at Tokyo Tech" loading="lazy" decoding="async"><span class="cap"><i>Milestones</i><b>Commencement · Tokyo Tech</b></span></span>
       </button>
-      <button class="card" data-cat="Milestones" data-src="assets/act-16.jpg" data-cap="Ph.D. graduation">
+      <button class="card" id="act-16" data-cat="Milestones" data-src="assets/act-16.jpg" data-cap="Ph.D. graduation">
         <span class="fig"><img src="assets/act-16.jpg" alt="Ph.D. graduation" loading="lazy" decoding="async"><span class="cap"><i>Milestones</i><b>Ph.D. graduation</b></span></span>
       </button>
-      <button class="card" data-cat="Milestones" data-src="assets/act-17.jpg" data-cap="Graduation day · Tokyo Tech">
+      <button class="card" id="act-17" data-cat="Milestones" data-src="assets/act-17.jpg" data-cap="Graduation day · Tokyo Tech">
         <span class="fig"><img src="assets/act-17.jpg" alt="Graduation day at Tokyo Tech" loading="lazy" decoding="async"><span class="cap"><i>Milestones</i><b>Graduation day · Tokyo Tech</b></span></span>
       </button>
     </div>
@@ -1282,11 +1484,11 @@ h1.hero-name{
   </div>
 </section>
 
-<!-- ============ 07 SKILLS ============ -->
+<!-- ============ 08 SKILLS ============ -->
 <section id="skills" aria-labelledby="sk-t">
   <div class="wrap">
     <header class="sec-head reveal">
-      <span class="mono sec-num">07 / Skills</span>
+      <span class="mono sec-num">08 / Skills</span>
       <h2 class="sec-title" id="sk-t">Tools of the trade</h2>
     </header>
     <div class="skill-rows">
@@ -1330,11 +1532,11 @@ h1.hero-name{
 
 </main>
 
-<!-- ============ 08 CONTACT ============ -->
+<!-- ============ 09 CONTACT ============ -->
 <footer id="contact" aria-labelledby="ct-t">
   <div class="wrap">
     <header class="sec-head reveal">
-      <span class="mono sec-num">08 / Contact</span>
+      <span class="mono sec-num">09 / Contact</span>
       <p class="sec-title">Get in touch</p>
       <span class="sec-note">Open to collaboration, supervision and industry projects</span>
     </header>
@@ -1397,6 +1599,21 @@ h1.hero-name{
     <div class="lb-cap">
       <b id="lbCap"></b>
       <span class="mono" id="lbCat"></span>
+    </div>
+    <div class="lb-share">
+      <span class="mono">Share</span>
+      <div class="lb-share-btns">
+        <button type="button" class="lb-share-btn" id="lbShareFb" aria-label="Share to Facebook">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 21v-7.5H16l.5-3.5h-3V7.7c0-1 .3-1.7 1.7-1.7H16.5V2.8c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3V10H7v3.5h2.8V21h3.7z"/></svg>
+        </button>
+        <button type="button" class="lb-share-btn" id="lbShareLi" aria-label="Share to LinkedIn">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.94 8.5H3.56V20h3.38V8.5zM5.25 3.5a1.96 1.96 0 100 3.92 1.96 1.96 0 000-3.92zM20.5 20h-3.38v-6.1c0-1.46-.03-3.33-2.03-3.33-2.04 0-2.35 1.6-2.35 3.23V20H9.36V8.5h3.24v1.57h.05c.45-.86 1.56-1.77 3.2-1.77 3.42 0 4.65 2.25 4.65 5.18V20z"/></svg>
+        </button>
+        <button type="button" class="lb-share-btn" id="lbShareIg" aria-label="Share to Instagram or copy link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg>
+        </button>
+      </div>
+      <span class="mono lb-share-status" id="lbShareStatus" aria-live="polite"></span>
     </div>
   </div>
   <span class="lb-count mono" id="lbCount"></span>
@@ -1615,6 +1832,8 @@ h1.hero-name{
      --------------------------------------------------------- */
   var cards = $$("#gallery .card");
   var visible = cards.slice();
+  /* set by the filter module — lets a #act-XX deep link reach a filtered-out card */
+  var galleryShowAll = null;
 
   (function filters() {
     var pills = $$(".pill");
@@ -1640,14 +1859,21 @@ h1.hero-name{
       if (empty) empty.classList.toggle("show", shown.length === 0);
     }
 
-    pills.forEach(function (p) {
-      p.addEventListener("click", function () {
-        pills.forEach(function (o) { o.setAttribute("aria-pressed", "false"); });
-        p.setAttribute("aria-pressed", "true");
-        apply(p.getAttribute("data-filter") || "all");
+    function select(cat) {
+      pills.forEach(function (o) {
+        o.setAttribute("aria-pressed", (o.getAttribute("data-filter") || "all") === cat ? "true" : "false");
       });
+      apply(cat);
+    }
+
+    pills.forEach(function (p) {
+      p.addEventListener("click", function () { select(p.getAttribute("data-filter") || "all"); });
     });
+
+    galleryShowAll = function () { select("all"); };
   })();
+
+  var SITE_URL = "https://webpage-sigma-ruby.vercel.app/";
 
   (function lightbox() {
     var box = $("#lightbox");
@@ -1659,6 +1885,7 @@ h1.hero-name{
 
     var idx = 0;
     var lastFocus = null;
+    var currentId = "";
 
     function show(i) {
       if (!visible.length) return;
@@ -1669,17 +1896,25 @@ h1.hero-name{
       if (cap) cap.textContent = c.getAttribute("data-cap") || "";
       if (cat) cat.textContent = c.getAttribute("data-cat") || "";
       if (count) count.innerHTML = "<b>" + String(idx + 1).padStart(2, "0") + "</b> / " + String(visible.length).padStart(2, "0");
+      currentId = c.id || "";
     }
     function open(c) {
+      /* a deep link may name a card the active filter has hidden — reopen "All"
+         so the arrows page through a set that actually contains it */
+      if (visible.indexOf(c) < 0 && galleryShowAll) galleryShowAll();
       var i = visible.indexOf(c);
+      if (i < 0) { visible = cards.slice(); i = visible.indexOf(c); }
       if (i < 0) i = 0;
-      lastFocus = document.activeElement;
+      var wasOpen = box.classList.contains("open");
+      if (!wasOpen) lastFocus = document.activeElement;
       show(i);
       box.classList.add("open");
       box.setAttribute("aria-hidden", "false");
       document.body.classList.add("is-locked");
-      var close = $("#lbClose");
-      if (close) close.focus();
+      if (!wasOpen) {
+        var close = $("#lbClose");
+        if (close) close.focus();
+      }
     }
     function close() {
       box.classList.remove("open");
@@ -1691,6 +1926,128 @@ h1.hero-name{
     cards.forEach(function (c) {
       c.addEventListener("click", function () { open(c); });
     });
+
+    /* deep link: #act-07 in the URL opens that photo once layout is ready */
+    function parkBehind(c) {
+      /* leave the card centred behind the overlay so closing lands on it cleanly
+         instead of on a card tucked under the fixed nav */
+      try {
+        if (!c.offsetParent && !c.offsetHeight) return;
+        var y = c.getBoundingClientRect().top + (window.pageYOffset || 0)
+              - Math.max(80, (window.innerHeight - c.offsetHeight) / 2);
+        y = Math.max(0, y);
+        try { window.scrollTo({ top: y, behavior: "auto" }); }
+        catch (e1) { window.scrollTo(0, y); }
+      } catch (err) { /* layout not ready — the native hash jump is good enough */ }
+    }
+    function openFromHash() {
+      var h = (window.location.hash || "").replace(/^#/, "");
+      if (!h || !/^act-\d{2}$/.test(h)) return;
+      var c = null;
+      for (var k = 0; k < cards.length; k++) {
+        if (cards[k].id === h) { c = cards[k]; break; }
+      }
+      if (!c) return;
+      open(c);
+      /* the filter reset un-hides cards on a timer — park after that settles */
+      window.setTimeout(function () { parkBehind(c); }, 320);
+    }
+    if (document.readyState === "complete") {
+      window.setTimeout(openFromHash, 60);
+    } else {
+      window.addEventListener("load", function () {
+        window.setTimeout(openFromHash, 60);
+      }, { once: true });
+    }
+    window.addEventListener("hashchange", openFromHash);
+
+    /* share row — Facebook / LinkedIn popups, Instagram via Web Share API
+       with a copy-link fallback (no web share endpoint exists for Instagram) */
+    (function share() {
+      var fb = $("#lbShareFb"), li = $("#lbShareLi"), ig = $("#lbShareIg");
+      var status = $("#lbShareStatus");
+      var statusTimer = null;
+
+      function shareUrl() { return currentId ? SITE_URL + "#" + currentId : SITE_URL; }
+
+      function flashStatus(msg) {
+        if (!status) return;
+        status.textContent = msg;
+        status.classList.add("show");
+        if (statusTimer) window.clearTimeout(statusTimer);
+        statusTimer = window.setTimeout(function () {
+          status.classList.remove("show");
+        }, 2600);
+      }
+
+      /* window.open returns null when a popup blocker (or an in-app browser)
+         refuses the window — never assume it succeeded. `noopener` in the feature
+         string also forces a null return, so the opener is cleared afterwards. */
+      function popup(url) {
+        var w = null;
+        try { w = window.open(url, "_blank", "width=600,height=600"); } catch (err) { w = null; }
+        if (!w) { copyFallback("Popup blocked — link copied"); return; }
+        try { w.opener = null; } catch (err) { /* cross-origin, ignore */ }
+        try { w.focus(); } catch (err) { /* ignore */ }
+      }
+
+      function copyFallback(okMsg) {
+        var url = shareUrl();
+        var msg = okMsg || "Link copied";
+        /* navigator.clipboard is undefined on file:// and other insecure contexts */
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          try {
+            navigator.clipboard.writeText(url).then(function () {
+              flashStatus(msg);
+            })["catch"](function () { legacyCopy(url, msg); });
+            return;
+          } catch (err) { /* fall through */ }
+        }
+        legacyCopy(url, msg);
+      }
+
+      function legacyCopy(url, msg) {
+        var ok = false;
+        var ta = null;
+        try {
+          ta = document.createElement("textarea");
+          ta.value = url;
+          ta.setAttribute("readonly", "");
+          ta.style.position = "fixed";
+          ta.style.top = "0";
+          ta.style.left = "0";
+          ta.style.opacity = "0";
+          document.body.appendChild(ta);
+          ta.focus();
+          ta.select();
+          if (ta.setSelectionRange) ta.setSelectionRange(0, url.length);
+          ok = document.execCommand("copy") === true;
+        } catch (err) {
+          ok = false;
+        }
+        if (ta && ta.parentNode) ta.parentNode.removeChild(ta);
+        flashStatus(ok ? (msg || "Link copied") : url);
+      }
+
+      if (fb) fb.addEventListener("click", function () {
+        popup("https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(shareUrl()));
+      });
+      if (li) li.addEventListener("click", function () {
+        popup("https://www.linkedin.com/sharing/share-offsite/?url=" + encodeURIComponent(shareUrl()));
+      });
+      if (ig) ig.addEventListener("click", function () {
+        if (navigator.share) {
+          try {
+            navigator.share({ title: document.title, url: shareUrl() })["catch"](function (err) {
+              /* the user dismissing the sheet is not a failure worth reacting to */
+              if (!err || err.name !== "AbortError") copyFallback();
+            });
+            return;
+          } catch (err) { /* fall through */ }
+        }
+        copyFallback();
+      });
+    })();
 
     /* swipe left / right to page through images on touch devices */
     var swX = 0, swY = 0;
@@ -1725,7 +2082,8 @@ h1.hero-name{
         var f = $$("button", box);
         if (!f.length) return;
         var first = f[0], last = f[f.length - 1];
-        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+        if (!box.contains(document.activeElement)) { e.preventDefault(); first.focus(); }
+        else if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
         else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
       }
     });
@@ -1813,7 +2171,8 @@ h1.hero-name{
   (function touchGlow() {
     var SEL = ".btn,.nav-cta,.nav-links a,#menu a,.brand,.mail,.cm-val,.cm-close," +
               ".chip,.pill,.tag,.pub-btn,.pub-first,.sec-title,.card,.line-mask," +
-              "a.accent,.to-top,.lb-btn,.lb-close";
+              "a.accent,.to-top,.lb-btn,.lb-close,.doi-chip,.lb-share-btn,.op-card," +
+              ".portrait-frame,.tl-item,.edu-card,.res-card,.pub-year";
     var active = [];
     var timer = null;
 
